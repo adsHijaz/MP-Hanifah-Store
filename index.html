@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hanifah Store — Belanja COD, Bayar di Tempat</title>
+  <meta name="description" content="Belanja mudah di Hanifah Store. Bayar di tempat (COD) via JNE, pesan langsung lewat WhatsApp.">
+  <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="assets/js/config.js"></script>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="container header-inner">
+      <a href="#" class="brand">
+        <img src="assets/img/logo.svg" alt="Logo" class="brand-logo">
+        <span class="brand-name" data-store-name>Hanifah Store</span>
+      </a>
+      <button class="cart-btn" id="openCart" aria-label="Buka keranjang">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>
+        <span>Keranjang</span>
+        <span class="badge" id="cartBadge">0</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <h1>Belanja Mudah,<br><span>Bayar Saat Barang Tiba</span></h1>
+      <p data-tagline>Pesan via WhatsApp, dikirim JNE, bayar di tempat (COD).</p>
+      <div class="hero-badges">
+        <span class="pill">✔ COD Bayar di Tempat</span>
+        <span class="pill">✔ Dikirim JNE</span>
+        <span class="pill">✔ Konsultasi via WA</span>
+      </div>
+      <a href="#produk" class="btn btn-primary btn-lg">Lihat Produk</a>
+    </div>
+  </section>
+
+  <!-- CARA PESAN -->
+  <section class="section" id="cara-pesan">
+    <div class="container">
+      <h2 class="section-title">Cara Pesan</h2>
+      <div class="steps">
+        <div class="step"><b>1</b><h3>Pilih Produk</h3><p>Masukkan produk ke keranjang.</p></div>
+        <div class="step"><b>2</b><h3>Isi Alamat</h3><p>Nama, nomor WA, dan alamat lengkap.</p></div>
+        <div class="step"><b>3</b><h3>Kirim ke WA</h3><p>Admin membalas total harga + ongkir JNE.</p></div>
+        <div class="step"><b>4</b><h3>Balas "SETUJU"</h3><p>Paket dikirim, bayar saat barang tiba.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUK -->
+  <section class="section section-alt" id="produk">
+    <div class="container">
+      <h2 class="section-title">Produk Kami</h2>
+      <div class="toolbar">
+        <input type="search" id="search" class="input" placeholder="Cari produk…" autocomplete="off">
+      </div>
+      <div class="chips" id="categories"></div>
+      <div class="grid" id="productGrid">
+        <p class="muted center">Memuat produk…</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq">
+    <div class="container narrow">
+      <h2 class="section-title">Pertanyaan Umum</h2>
+      <details class="faq"><summary>Berapa ongkos kirimnya?</summary><p>Ongkir JNE dihitung admin sesuai alamat Anda, lalu dikirim lewat WhatsApp bersama total pembayaran sebelum paket dikirim.</p></details>
+      <details class="faq"><summary>Kapan saya membayar?</summary><p>Saat paket tiba. Pembayaran (harga barang + ongkir) diserahkan langsung ke kurir JNE.</p></details>
+      <details class="faq"><summary>Bagaimana jika barang rusak atau salah kirim?</summary><p>Silakan hubungi admin via WhatsApp untuk konsultasi penukaran atau pengembalian.</p></details>
+      <details class="faq"><summary>Apakah pesanan langsung diproses?</summary><p>Pesanan diproses setelah Anda membalas "SETUJU" atas rincian total yang dikirim admin.</p></details>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p><b data-store-name>Hanifah Store</b> · hanifah.store</p>
+      <p class="muted">Pembayaran COD · Pengiriman JNE</p>
+      <a class="btn btn-wa" id="footerWa" target="_blank" rel="noopener">Chat Admin WhatsApp</a>
+    </div>
+  </footer>
+
+  <!-- TOMBOL WA MENGAMBANG -->
+  <a class="wa-float" id="floatWa" target="_blank" rel="noopener" aria-label="Chat WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>
+  </a>
+
+  <!-- KERANJANG (DRAWER) -->
+  <div class="overlay" id="overlay"></div>
+  <aside class="drawer" id="drawer" aria-hidden="true">
+    <div class="drawer-head">
+      <h2 id="drawerTitle">Keranjang</h2>
+      <button class="icon-btn" id="closeCart" aria-label="Tutup">✕</button>
+    </div>
+
+    <!-- Langkah 1: daftar item -->
+    <div class="drawer-body" id="stepCart">
+      <div id="cartItems"></div>
+      <div class="cart-summary">
+        <div class="row"><span>Subtotal</span><b id="cartSubtotal">Rp 0</b></div>
+        <div class="row muted"><span>Ongkir JNE</span><span>Dikonfirmasi admin</span></div>
+        <button class="btn btn-primary btn-block" id="toCheckout">Lanjut Isi Alamat</button>
+      </div>
+    </div>
+
+    <!-- Langkah 2: form alamat -->
+    <form class="drawer-body hidden" id="stepCheckout" novalidate>
+      <label>Nama Lengkap *<input class="input" name="nama" required></label>
+      <label>No. WhatsApp *<input class="input" name="wa" type="tel" inputmode="tel" placeholder="08xxxxxxxxxx" required></label>
+      <label>Alamat Lengkap *<textarea class="input" name="alamat" rows="3" placeholder="Jalan, nomor rumah, RT/RW, kelurahan/desa" required></textarea></label>
+      <div class="two">
+        <label>Kecamatan *<input class="input" name="kecamatan" required></label>
+        <label>Kota/Kab. *<input class="input" name="kota" required></label>
+      </div>
+      <label>Kode Pos *<input class="input" name="kodepos" inputmode="numeric" maxlength="5" required></label>
+      <label>Catatan (opsional)<textarea class="input" name="catatan" rows="2"></textarea></label>
+      <p class="note">Pembayaran <b>COD</b>. Admin akan membalas rincian total (barang + ongkir JNE). Pesanan diproses setelah Anda membalas <b>SETUJU</b>.</p>
+      <p class="error hidden" id="formError"></p>
+      <button type="submit" class="btn btn-wa btn-block">Kirim Pesanan ke WhatsApp</button>
+      <button type="button" class="btn btn-ghost btn-block" id="backToCart">← Kembali ke Keranjang</button>
+    </form>
+
+    <!-- Langkah 3: terima kasih -->
+    <div class="drawer-body hidden center" id="stepDone">
+      <div class="done-icon">✓</div>
+      <h3>Pesanan terkirim ke WhatsApp</h3>
+      <p class="muted">Jika WhatsApp tidak terbuka otomatis, tekan tombol di bawah.</p>
+      <a class="btn btn-wa btn-block" id="retryWa" target="_blank" rel="noopener">Buka WhatsApp</a>
+      <button class="btn btn-ghost btn-block" id="doneClose">Tutup</button>
+    </div>
+  </aside>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
