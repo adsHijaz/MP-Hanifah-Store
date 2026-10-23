@@ -7,7 +7,7 @@ window.STORE_CONFIG = {
   tagline: "Pesan via WhatsApp, dikirim JNE, bayar di tempat (COD).",
 
   // Nomor WA admin, format internasional TANPA + dan tanpa spasi (contoh: 6281234567890)
-  waNumber: "6281234567890",
+  waNumber: "6285156219748",
 
   // Sumber data produk:
   // - default: file lokal "data/products.csv"
