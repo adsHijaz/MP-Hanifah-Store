@@ -159,7 +159,7 @@
       return (activeCat === "Semua" || p.kategori === activeCat) &&
         (!q || (p.nama + " " + p.deskripsi + " " + p.kode).toLowerCase().indexOf(q) >= 0);
     });
-    var more = $("#loadMore");
+    var more = $("#loadWrap");
     $("#resultInfo").textContent = list.length ? list.length + " produk" + (activeCat !== "Semua" ? " di " + activeCat : "") : "";
     if (!list.length) {
       $("#productGrid").innerHTML = '<p class="muted center grid-empty">Produk tidak ditemukan.</p>';
@@ -169,7 +169,9 @@
     $("#productGrid").innerHTML = list.slice(0, shown).map(function (p) { return cardHTML(p); }).join("");
     var rest = list.length - shown;
     more.classList.toggle("hidden", rest <= 0);
-    more.textContent = "Muat lebih banyak (" + rest + " lagi)";
+    $("#loadInfo").textContent = "Menampilkan " + Math.min(shown, list.length) + " dari " + list.length + " produk";
+    $("#loadMore").textContent = "Muat " + Math.min(PAGE_SIZE, rest) + " lagi";
+    $("#showAll").textContent = "Tampilkan semua (" + list.length + ")";
   }
 
   /* ---------- Keranjang ---------- */
@@ -391,6 +393,7 @@
     });
     $("#search").addEventListener("input", function (e) { query = e.target.value; shown = PAGE_SIZE; renderProducts(); });
     $("#loadMore").addEventListener("click", function () { shown += PAGE_SIZE; renderProducts(); });
+    $("#showAll").addEventListener("click", function () { shown = Infinity; renderProducts(); });
     $("#featPrev").addEventListener("click", function () { scrollFeatured(-1); });
     $("#featNext").addEventListener("click", function () { scrollFeatured(1); });
     var navT;

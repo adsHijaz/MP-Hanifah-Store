@@ -8,8 +8,8 @@
   <link rel="icon" href="assets/img/logo.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=5">
-  <script src="assets/js/config.js?v=5"></script>
+  <link rel="stylesheet" href="assets/css/style.css?v=6">
+  <script src="assets/js/config.js?v=6"></script>
 </head>
 <body>
 
@@ -95,7 +95,13 @@
       <div class="grid" id="productGrid">
         <p class="muted center">Memuat produk…</p>
       </div>
-      <div class="center"><button class="btn btn-ghost load-more hidden" id="loadMore">Muat lebih banyak</button></div>
+      <div class="load-wrap hidden" id="loadWrap">
+        <p class="load-info" id="loadInfo"></p>
+        <div class="load-btns">
+          <button class="btn btn-ghost load-more" id="loadMore">Muat 12 lagi</button>
+          <button class="btn btn-primary" id="showAll">Tampilkan semua</button>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -176,7 +182,7 @@
 
   <div class="toast" id="toast"></div>
 
-  <script src="assets/js/app.js?v=5"></script>
-  <script src="assets/js/gradient-wave.js?v=5" defer></script>
+  <script src="assets/js/app.js?v=6"></script>
+  <script src="assets/js/gradient-wave.js?v=6" defer></script>
 </body>
 </html>

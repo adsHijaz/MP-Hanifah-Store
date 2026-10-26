@@ -236,7 +236,10 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 .featured-dots button.on{width:24px;background:var(--brand)}
 .sub-title{font-size:22px;font-weight:700;margin-bottom:16px;text-align:left}
 .result-info{font-size:14px;color:var(--muted);margin:-8px 0 14px}
-.load-more{margin-top:32px;border:1.5px solid var(--brand);color:var(--brand)}
+.load-wrap{margin-top:32px;text-align:center}
+.load-info{font-size:14px;color:var(--muted);margin-bottom:12px}
+.load-btns{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
+.load-more{border:1.5px solid var(--brand);color:var(--brand)}
 .load-more:hover{background:var(--brand-soft)}
 .card-action{margin-top:10px}
 .card-action .btn{margin-top:0;width:100%}
