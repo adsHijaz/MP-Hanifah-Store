@@ -7,11 +7,14 @@
   <meta name="description" content="Belanja mudah di Hanifah Store. Bayar di tempat (COD) via JNE, pesan langsung lewat WhatsApp.">
   <link rel="icon" href="assets/img/logo.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=2">
-  <script src="assets/js/config.js?v=2"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css?v=4">
+  <script src="assets/js/config.js?v=4"></script>
 </head>
 <body>
+
+  <!-- BAR PROMO -->
+  <div class="promo-bar hidden" id="promoBar"></div>
 
   <!-- HEADER -->
   <header class="header">
@@ -30,8 +33,9 @@
 
   <!-- HERO -->
   <section class="hero">
-    <div class="hero-bg" data-gradient-wave data-colors="#ccfbf1,#ffffff,#5eead4,#f0fdfa" aria-hidden="true"></div>
+    <div class="hero-bg" data-gradient-wave data-colors="#EEF2FF,#FFFFFF,#C7D2FE,#F9FAFB" aria-hidden="true"></div>
     <div class="container hero-inner">
+      <span class="hero-eyebrow">✔ Bayar di tempat, tanpa transfer</span>
       <h1>Belanja Mudah,<br><span>Bayar Saat Barang Tiba</span></h1>
       <p data-tagline>Pesan via WhatsApp, dikirim JNE, bayar di tempat (COD).</p>
       <div class="hero-badges">
@@ -40,6 +44,14 @@
         <span class="pill">✔ Konsultasi via WA</span>
       </div>
       <a href="#produk" class="btn btn-primary btn-lg">Lihat Produk</a>
+    </div>
+  </section>
+
+  <!-- PROMO -->
+  <section class="section section-promo" id="promo">
+    <div class="container">
+      <h2 class="section-title">Promo Spesial</h2>
+      <div class="promo-grid" id="promoGrid"></div>
     </div>
   </section>
 
@@ -75,6 +87,7 @@
     <div class="container narrow">
       <h2 class="section-title">Pertanyaan Umum</h2>
       <details class="faq"><summary>Berapa ongkos kirimnya?</summary><p>Ongkir JNE dihitung admin sesuai alamat Anda, lalu dikirim lewat WhatsApp bersama total pembayaran sebelum paket dikirim.</p></details>
+      <details class="faq"><summary>Bagaimana syarat promonya?</summary><p>Gratis ongkir berlaku untuk alamat Jakarta, Bogor, Depok, Tangerang, dan Bekasi dengan belanja minimal Rp100.000. Diskon 30% berlaku untuk belanja minimal Rp500.000 dan dihitung dari total harga barang. Kedua promo bisa didapat bersamaan.</p></details>
       <details class="faq"><summary>Kapan saya membayar?</summary><p>Saat paket tiba. Pembayaran (harga barang + ongkir) diserahkan langsung ke kurir JNE.</p></details>
       <details class="faq"><summary>Bagaimana jika barang rusak atau salah kirim?</summary><p>Silakan hubungi admin via WhatsApp untuk konsultasi penukaran atau pengembalian.</p></details>
       <details class="faq"><summary>Apakah pesanan langsung diproses?</summary><p>Pesanan diproses setelah Anda membalas "SETUJU" atas rincian total yang dikirim admin.</p></details>
@@ -106,8 +119,12 @@
     <div class="drawer-body" id="stepCart">
       <div id="cartItems"></div>
       <div class="cart-summary">
-        <div class="row"><span>Subtotal</span><b id="cartSubtotal">Rp 0</b></div>
-        <div class="row muted"><span>Ongkir JNE</span><span>Dikonfirmasi admin</span></div>
+        <p class="promo-hint hidden" id="promoHint"></p>
+        <div class="promo-progress hidden" id="promoProgress"><span></span></div>
+        <div class="row"><span>Subtotal</span><span id="cartSubtotal">Rp 0</span></div>
+        <div class="row discount hidden" id="cartDiscountRow"><span id="cartDiscountLabel">Diskon</span><span id="cartDiscount">−Rp 0</span></div>
+        <div class="row muted"><span>Ongkir JNE</span><span id="cartShip">Dikonfirmasi admin</span></div>
+        <div class="row total"><span>Total barang</span><b id="cartTotal">Rp 0</b></div>
         <button class="btn btn-primary btn-block" id="toCheckout">Lanjut Isi Alamat</button>
       </div>
     </div>
@@ -121,6 +138,7 @@
         <label>Kecamatan *<input class="input" name="kecamatan" required></label>
         <label>Kota/Kab. *<input class="input" name="kota" required></label>
       </div>
+      <p class="ship-status hidden" id="shipStatus"></p>
       <label>Kode Pos *<input class="input" name="kodepos" inputmode="numeric" maxlength="5" required></label>
       <label>Catatan (opsional)<textarea class="input" name="catatan" rows="2"></textarea></label>
       <p class="note">Pembayaran <b>COD</b>. Admin akan membalas rincian total (barang + ongkir JNE). Pesanan diproses setelah Anda membalas <b>SETUJU</b>.</p>
@@ -141,7 +159,7 @@
 
   <div class="toast" id="toast"></div>
 
-  <script src="assets/js/app.js?v=2"></script>
-  <script src="assets/js/gradient-wave.js?v=2" defer></script>
+  <script src="assets/js/app.js?v=4"></script>
+  <script src="assets/js/gradient-wave.js?v=4" defer></script>
 </body>
 </html>
