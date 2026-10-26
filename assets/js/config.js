@@ -18,5 +18,24 @@ window.STORE_CONFIG = {
   metaPixelId: "",
 
   // Warna utama toko (kode hex)
-  brandColor: "#0f766e"
+  brandColor: "#3758F9",
+
+  // =======================================================
+  // PROMO — ubah angka di sini, atau set active: false untuk mematikan
+  // =======================================================
+  promos: {
+    freeShipping: {
+      active: true,
+      minPurchase: 100000,          // minimal belanja (sebelum diskon)
+      title: "Gratis Ongkir Jabodetabek",
+      // kata kunci kota/kabupaten yang dapat gratis ongkir
+      areas: ["jakarta", "bogor", "depok", "tangerang", "bekasi"]
+    },
+    discount: {
+      active: true,
+      minPurchase: 500000,          // minimal belanja
+      percent: 30,                  // besar diskon (%)
+      title: "Diskon 30%"
+    }
+  }
 };

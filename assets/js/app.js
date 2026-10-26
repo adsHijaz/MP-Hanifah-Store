@@ -120,6 +120,75 @@
   function cartTotal() {
     return Object.keys(cart).reduce(function (s, k) { var p = findP(k); return s + (p ? p.harga * cart[k] : 0); }, 0);
   }
+
+  /* ---------- Promo ---------- */
+  var PR = C.promos || {};
+  var FS = PR.freeShipping && PR.freeShipping.active ? PR.freeShipping : null;
+  var DC = PR.discount && PR.discount.active ? PR.discount : null;
+  function shortRp(n) { return n >= 1000 ? "Rp" + (n / 1000).toLocaleString("id-ID") + "rb" : rupiah(n); }
+  function isFreeArea(text) {
+    if (!FS) return false;
+    var t = String(text || "").toLowerCase();
+    return (FS.areas || []).some(function (a) { return t.indexOf(a) >= 0; });
+  }
+  // Hitung semua angka promo dari subtotal (sebelum diskon) dan alamat
+  function calc(areaText) {
+    var sub = cartTotal();
+    var disc = DC && sub >= DC.minPurchase ? Math.round(sub * DC.percent / 100) : 0;
+    var shipEligible = !!FS && sub >= FS.minPurchase;
+    return {
+      subtotal: sub,
+      discount: disc,
+      total: sub - disc,
+      shipEligible: shipEligible,
+      freeShip: shipEligible && areaText !== undefined && isFreeArea(areaText)
+    };
+  }
+  function renderPromos() {
+    var cards = [];
+    if (FS) cards.push({
+      icon: '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 3h15v13H1z"/><path d="M16 8h4l3 3v5h-7z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>',
+      title: FS.title,
+      desc: "Untuk alamat Jakarta, Bogor, Depok, Tangerang, dan Bekasi.",
+      term: "Min. belanja " + rupiah(FS.minPurchase)
+    });
+    if (DC) cards.push({
+      icon: '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg>',
+      title: DC.title,
+      desc: "Potongan " + DC.percent + "% dari total harga barang, otomatis dihitung di keranjang.",
+      term: "Min. belanja " + rupiah(DC.minPurchase)
+    });
+    var sec = $("#promo");
+    if (!cards.length) { if (sec) sec.classList.add("hidden"); return; }
+    $("#promoGrid").innerHTML = cards.map(function (c, i) {
+      return '<div class="promo-card' + (i === 1 ? " alt" : "") + '"><div class="promo-icon">' + c.icon + "</div>" +
+        '<div class="promo-text"><h3>' + esc(c.title) + "</h3><p>" + esc(c.desc) + "</p>" +
+        '<span class="promo-term">' + esc(c.term) + "</span></div></div>";
+    }).join("");
+    var bar = $("#promoBar");
+    if (bar) {
+      bar.innerHTML = cards.map(function (c) { return "<span>" + esc(c.title) + " · " + esc(c.term.replace("Min. belanja ", "min. ")) + "</span>"; }).join('<i aria-hidden="true">•</i>');
+      bar.classList.remove("hidden");
+    }
+  }
+  function promoHint(c) {
+    if (!c.subtotal) return "";
+    if (FS && c.subtotal < FS.minPurchase) return "Tambah " + rupiah(FS.minPurchase - c.subtotal) + " lagi untuk gratis ongkir Jabodetabek.";
+    if (DC && c.subtotal < DC.minPurchase) return "Tambah " + rupiah(DC.minPurchase - c.subtotal) + " lagi untuk diskon " + DC.percent + "%.";
+    if (DC) return "Diskon " + DC.percent + "% sudah diterapkan.";
+    return "";
+  }
+  function updateShipStatus() {
+    var box = $("#shipStatus"); if (!box || !FS) return;
+    var f = $("#stepCheckout");
+    var area = f.kota.value + " " + f.kecamatan.value;
+    var c = calc(area);
+    if (!f.kota.value.trim()) { box.classList.add("hidden"); return; }
+    box.classList.remove("hidden", "ok");
+    if (c.freeShip) { box.classList.add("ok"); box.textContent = "✔ Alamat Jabodetabek: ongkir GRATIS."; }
+    else if (isFreeArea(area)) box.textContent = "Alamat Jabodetabek. Tambah " + rupiah(FS.minPurchase - c.subtotal) + " lagi untuk gratis ongkir.";
+    else box.textContent = "Di luar Jabodetabek: ongkir JNE dikonfirmasi admin.";
+  }
   function addToCart(kode) {
     var p = findP(kode); if (!p) return;
     cart[kode] = (cart[kode] || 0) + 1; saveCart(); renderCart();
@@ -144,8 +213,24 @@
         '</span><button data-inc="' + esc(k) + '" aria-label="Tambah">+</button>' +
         '<button class="remove" data-del="' + esc(k) + '">Hapus</button></div></div></div>';
     }).join("") : '<p class="empty">Keranjang masih kosong.</p>';
-    $("#cartSubtotal").textContent = rupiah(cartTotal());
+    var c = calc();
+    $("#cartSubtotal").textContent = rupiah(c.subtotal);
+    $("#cartDiscountRow").classList.toggle("hidden", !c.discount);
+    if (DC) $("#cartDiscountLabel").textContent = "Diskon " + DC.percent + "%";
+    $("#cartDiscount").textContent = "−" + rupiah(c.discount);
+    $("#cartTotal").textContent = rupiah(c.total);
+    $("#cartShip").textContent = c.shipEligible ? "Gratis untuk Jabodetabek" : "Dikonfirmasi admin";
+    $("#cartShip").classList.toggle("ok", c.shipEligible);
+    var hint = promoHint(c), h = $("#promoHint");
+    h.textContent = hint; h.classList.toggle("hidden", !hint);
+    h.classList.toggle("ok", !!c.discount);
+    var pb = $("#promoProgress");
+    if (pb && DC) {
+      pb.classList.toggle("hidden", !c.subtotal);
+      pb.firstElementChild.style.width = Math.min(100, Math.round(c.subtotal / DC.minPurchase * 100)) + "%";
+    }
     $("#toCheckout").disabled = !keys.length;
+    updateShipStatus();
   }
 
   /* ---------- Drawer ---------- */
@@ -183,8 +268,12 @@
       var p = findP(k); if (!p) return;
       lines.push(i++ + ". [" + p.kode + "] " + p.nama + " x" + cart[k] + " = " + rupiah(p.harga * cart[k]));
     });
-    lines.push("", "Subtotal: *" + rupiah(cartTotal()) + "*");
-    lines.push("Ongkir JNE: menunggu konfirmasi admin");
+    var c = calc(d.kota + " " + d.kecamatan);
+    lines.push("", "Subtotal: " + rupiah(c.subtotal));
+    if (c.discount) lines.push("Diskon " + DC.percent + "%: -" + rupiah(c.discount));
+    lines.push("Total barang: *" + rupiah(c.total) + "*");
+    if (c.freeShip) lines.push("Ongkir JNE: *GRATIS* (promo " + FS.title + ")");
+    else lines.push("Ongkir JNE: menunggu konfirmasi admin");
     lines.push("Pembayaran: *COD (bayar di tempat)*");
     if (d.catatan) lines.push("", "Catatan: " + d.catatan);
     lines.push("", "Mohon konfirmasi total pembayarannya. Terima kasih.");
@@ -204,7 +293,7 @@
     d.wa = normPhone(d.wa);
 
     lastWaUrl = "https://wa.me/" + C.waNumber + "?text=" + encodeURIComponent(buildMessage(d));
-    track("Purchase", { value: cartTotal(), currency: "IDR", num_items: cartCount() });
+    track("Purchase", { value: calc().total, currency: "IDR", num_items: cartCount() });
     window.open(lastWaUrl, "_blank");
 
     $("#retryWa").href = lastWaUrl;
@@ -252,6 +341,9 @@
     });
     $("#backToCart").addEventListener("click", function () { showStep("#stepCart"); });
     $("#stepCheckout").addEventListener("submit", submitOrder);
+    $("#stepCheckout").kota.addEventListener("input", updateShipStatus);
+    $("#stepCheckout").kecamatan.addEventListener("input", updateShipStatus);
+    renderPromos();
     document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeDrawer(); });
 
     renderCart();
