@@ -351,7 +351,23 @@
   };
 
   /* ---------- Pasang otomatis ---------- */
+  /* Pastikan latar selalu di belakang konten, walau CSS belum ter-update */
+  function prepareLayout(el) {
+    var parent = el.parentElement;
+    if (parent) {
+      if (getComputedStyle(parent).position === "static") parent.style.position = "relative";
+      parent.style.overflow = "hidden";
+      Array.prototype.forEach.call(parent.children, function (child) {
+        if (child === el) return;
+        if (getComputedStyle(child).position === "static") child.style.position = "relative";
+        child.style.zIndex = "1";
+      });
+    }
+    Object.assign(el.style, { position: "absolute", top: "0", right: "0", bottom: "0", left: "0", zIndex: "0", overflow: "hidden", pointerEvents: "none" });
+  }
+
   function mount(el) {
+    prepareLayout(el);
     var colors = (el.getAttribute("data-colors") || "#ccfbf1,#ffffff,#5eead4,#f0fdfa")
       .split(",").map(function (s) { return s.trim(); });
     var g;
