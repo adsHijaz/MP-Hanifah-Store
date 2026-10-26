@@ -69,6 +69,19 @@ Pastikan SSL aktif (hPanel/cPanel → SSL) agar `https://hanifah.store` berjalan
 3. Admin membalas total (barang + ongkir JNE).
 4. Pembeli membalas **SETUJU** → paket dikirim → dibayar saat tiba.
 
+## Promo
+
+Diatur di bagian `promos` dalam `assets/js/config.js`:
+
+| Promo | Isian | Keterangan |
+|---|---|---|
+| Gratis ongkir | `freeShipping.minPurchase` | Minimal belanja (sebelum diskon) |
+| | `freeShipping.areas` | Kata kunci kota yang dapat gratis ongkir |
+| Diskon | `discount.minPurchase` | Minimal belanja |
+| | `discount.percent` | Besar diskon (%) |
+
+Ubah `active: true` menjadi `active: false` untuk mematikan promo. Keranjang, form alamat, dan pesan WA ikut menyesuaikan otomatis.
+
 ## Event Meta Pixel
 
 `PageView`, `AddToCart`, `InitiateCheckout`, `Purchase` (saat pesanan dikirim ke WA).
