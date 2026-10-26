@@ -71,7 +71,7 @@
         // bersihkan keranjang dari produk yang sudah tidak ada
         Object.keys(cart).forEach(function (k) { if (!findP(k)) delete cart[k]; });
         saveCart();
-        renderCategories(); renderProducts(); renderCart();
+        renderCategories(); renderFeatured(); renderProducts(); renderCart();
       })
       .catch(function () {
         $("#productGrid").innerHTML = '<p class="muted center">Produk gagal dimuat. Pastikan situs dibuka lewat hosting (bukan klik file langsung) dan link CSV benar.</p>';
@@ -95,24 +95,81 @@
       ? '<img src="' + esc(p.foto) + '" alt="' + esc(p.nama) + '" loading="lazy" onerror="this.remove()">'
       : "";
   }
+  /* Tombol di kartu: "+ Keranjang", atau pengatur jumlah jika sudah di keranjang */
+  function actionHTML(kode) {
+    var n = cart[kode] || 0;
+    if (!n) return '<button class="btn btn-primary card-add" data-add="' + esc(kode) + '">+ Keranjang</button>';
+    return '<div class="card-qty"><button data-dec="' + esc(kode) + '" aria-label="Kurangi">−</button>' +
+      "<span><b>" + n + "</b><small> di keranjang</small></span>" +
+      '<button data-inc="' + esc(kode) + '" aria-label="Tambah">+</button></div>';
+  }
+  function cardHTML(p, extraClass) {
+    return '<article class="card' + (extraClass ? " " + extraClass : "") + '">' +
+      '<div class="card-img"><span class="ph">' + esc(initials(p.nama)) + "</span>" + imgHTML(p) +
+      (extraClass ? '<span class="card-flag">Terlaris</span>' : "") + "</div>" +
+      '<div class="card-body">' +
+      '<span class="card-cat">' + esc(p.kategori) + "</span>" +
+      '<h3 class="card-name">' + esc(p.nama) + "</h3>" +
+      (p.deskripsi ? '<p class="card-desc">' + esc(p.deskripsi) + "</p>" : "") +
+      '<div class="card-price">' + rupiah(p.harga) + "</div>" +
+      '<div class="card-action" data-act="' + esc(p.kode) + '">' + actionHTML(p.kode) + "</div>" +
+      "</div></article>";
+  }
+  function updateActions() {
+    document.querySelectorAll("[data-act]").forEach(function (el) {
+      el.innerHTML = actionHTML(el.getAttribute("data-act"));
+    });
+  }
+
+  /* ---------- Produk unggulan (carousel) ---------- */
+  function isFeatured(p) { return /^(ya|y|1|true)$/i.test(String(p.unggulan || "").trim()); }
+  function renderFeatured() {
+    var wrap = $("#featured"); if (!wrap) return;
+    var list = products.filter(isFeatured);
+    if (!list.length) { wrap.classList.add("hidden"); return; }
+    wrap.classList.remove("hidden");
+    var track = $("#featuredTrack");
+    track.innerHTML = list.map(function (p) { return cardHTML(p, "card-feat"); }).join("");
+    track.scrollLeft = 0;
+    updateFeaturedNav();
+  }
+  function featuredPages() {
+    var t = $("#featuredTrack");
+    return { page: Math.round(t.scrollLeft / t.clientWidth), total: Math.max(1, Math.ceil((t.scrollWidth - 4) / t.clientWidth)) };
+  }
+  function updateFeaturedNav() {
+    var t = $("#featuredTrack"); if (!t) return;
+    var s = featuredPages();
+    var dots = "";
+    for (var i = 0; i < s.total; i++) dots += '<button class="' + (i === s.page ? "on" : "") + '" data-fpage="' + i + '" aria-label="Halaman ' + (i + 1) + '"></button>';
+    $("#featuredDots").innerHTML = s.total > 1 ? dots : "";
+    $("#featPrev").disabled = t.scrollLeft <= 2;
+    $("#featNext").disabled = t.scrollLeft + t.clientWidth >= t.scrollWidth - 2;
+  }
+  function scrollFeatured(dir) {
+    var t = $("#featuredTrack");
+    t.scrollBy({ left: dir * t.clientWidth, behavior: "smooth" });
+  }
+
+  /* ---------- Grid semua produk ---------- */
+  var PAGE_SIZE = 12, shown = PAGE_SIZE;
   function renderProducts() {
     var q = query.toLowerCase();
     var list = products.filter(function (p) {
       return (activeCat === "Semua" || p.kategori === activeCat) &&
         (!q || (p.nama + " " + p.deskripsi + " " + p.kode).toLowerCase().indexOf(q) >= 0);
     });
-    if (!list.length) { $("#productGrid").innerHTML = '<p class="muted center">Produk tidak ditemukan.</p>'; return; }
-    $("#productGrid").innerHTML = list.map(function (p) {
-      return '<article class="card">' +
-        '<div class="card-img"><span class="ph">' + esc(initials(p.nama)) + "</span>" + imgHTML(p) + "</div>" +
-        '<div class="card-body">' +
-        '<span class="card-cat">' + esc(p.kategori) + "</span>" +
-        '<h3 class="card-name">' + esc(p.nama) + "</h3>" +
-        (p.deskripsi ? '<p class="card-desc">' + esc(p.deskripsi) + "</p>" : "") +
-        '<div class="card-price">' + rupiah(p.harga) + "</div>" +
-        '<button class="btn btn-primary" data-add="' + esc(p.kode) + '">+ Keranjang</button>' +
-        "</div></article>";
-    }).join("");
+    var more = $("#loadMore");
+    $("#resultInfo").textContent = list.length ? list.length + " produk" + (activeCat !== "Semua" ? " di " + activeCat : "") : "";
+    if (!list.length) {
+      $("#productGrid").innerHTML = '<p class="muted center grid-empty">Produk tidak ditemukan.</p>';
+      more.classList.add("hidden");
+      return;
+    }
+    $("#productGrid").innerHTML = list.slice(0, shown).map(function (p) { return cardHTML(p); }).join("");
+    var rest = list.length - shown;
+    more.classList.toggle("hidden", rest <= 0);
+    more.textContent = "Muat lebih banyak (" + rest + " lagi)";
   }
 
   /* ---------- Keranjang ---------- */
@@ -231,6 +288,7 @@
     }
     $("#toCheckout").disabled = !keys.length;
     updateShipStatus();
+    updateActions();
   }
 
   /* ---------- Drawer ---------- */
@@ -322,15 +380,22 @@
     initPixel(C.metaPixelId);
 
     document.addEventListener("click", function (e) {
-      var t = e.target.closest("[data-add],[data-inc],[data-dec],[data-del],[data-cat]");
+      var t = e.target.closest("[data-add],[data-inc],[data-dec],[data-del],[data-cat],[data-fpage]");
       if (!t) return;
       if (t.dataset.add) addToCart(t.dataset.add);
       else if (t.dataset.inc) changeQty(t.dataset.inc, 1);
       else if (t.dataset.dec) changeQty(t.dataset.dec, -1);
       else if (t.dataset.del) { delete cart[t.dataset.del]; saveCart(); renderCart(); }
-      else if (t.dataset.cat) { activeCat = t.dataset.cat; renderCategories(); renderProducts(); }
+      else if (t.dataset.cat) { activeCat = t.dataset.cat; shown = PAGE_SIZE; renderCategories(); renderProducts(); }
+      else if (t.dataset.fpage) { var tr = $("#featuredTrack"); tr.scrollTo({ left: Number(t.dataset.fpage) * tr.clientWidth, behavior: "smooth" }); }
     });
-    $("#search").addEventListener("input", function (e) { query = e.target.value; renderProducts(); });
+    $("#search").addEventListener("input", function (e) { query = e.target.value; shown = PAGE_SIZE; renderProducts(); });
+    $("#loadMore").addEventListener("click", function () { shown += PAGE_SIZE; renderProducts(); });
+    $("#featPrev").addEventListener("click", function () { scrollFeatured(-1); });
+    $("#featNext").addEventListener("click", function () { scrollFeatured(1); });
+    var navT;
+    $("#featuredTrack").addEventListener("scroll", function () { clearTimeout(navT); navT = setTimeout(updateFeaturedNav, 60); }, { passive: true });
+    window.addEventListener("resize", function () { clearTimeout(navT); navT = setTimeout(updateFeaturedNav, 150); });
     $("#openCart").addEventListener("click", openDrawer);
     $("#closeCart").addEventListener("click", closeDrawer);
     $("#overlay").addEventListener("click", closeDrawer);

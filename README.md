@@ -30,9 +30,9 @@ data/products.csv     Daftar produk
 
 Kolom wajib di `data/products.csv`:
 
-| kode | nama | harga | kategori | deskripsi | foto | aktif |
-|---|---|---|---|---|---|---|
-| Kode barang Accurate | Nama produk | Angka saja | Untuk filter | Singkat | Link gambar (opsional) | `ya` / `tidak` |
+| kode | nama | harga | kategori | deskripsi | foto | aktif | unggulan |
+|---|---|---|---|---|---|---|---|
+| Kode barang Accurate | Nama produk | Angka saja | Untuk filter | Singkat | Link gambar (opsional) | `ya` / `tidak` | `ya` = tampil di carousel "Terlaris" |
 
 **Cara paling mudah (tanpa edit kode):** pakai Google Sheet.
 1. Buat Google Sheet dengan kolom di atas (baris pertama = judul kolom).

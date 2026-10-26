@@ -8,8 +8,8 @@
   <link rel="icon" href="assets/img/logo.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=4">
-  <script src="assets/js/config.js?v=4"></script>
+  <link rel="stylesheet" href="assets/css/style.css?v=5">
+  <script src="assets/js/config.js?v=5"></script>
 </head>
 <body>
 
@@ -72,13 +72,30 @@
   <section class="section section-alt" id="produk">
     <div class="container">
       <h2 class="section-title">Produk Kami</h2>
+
+      <!-- Produk unggulan -->
+      <div class="featured hidden" id="featured">
+        <div class="featured-head">
+          <h3>Terlaris</h3>
+          <div class="featured-nav">
+            <button class="icon-btn" id="featPrev" aria-label="Sebelumnya">‹</button>
+            <button class="icon-btn" id="featNext" aria-label="Berikutnya">›</button>
+          </div>
+        </div>
+        <div class="featured-track" id="featuredTrack"></div>
+        <div class="featured-dots" id="featuredDots"></div>
+      </div>
+
+      <h3 class="sub-title">Semua Produk</h3>
       <div class="toolbar">
         <input type="search" id="search" class="input" placeholder="Cari produk…" autocomplete="off">
       </div>
       <div class="chips" id="categories"></div>
+      <p class="result-info" id="resultInfo"></p>
       <div class="grid" id="productGrid">
         <p class="muted center">Memuat produk…</p>
       </div>
+      <div class="center"><button class="btn btn-ghost load-more hidden" id="loadMore">Muat lebih banyak</button></div>
     </div>
   </section>
 
@@ -159,7 +176,7 @@
 
   <div class="toast" id="toast"></div>
 
-  <script src="assets/js/app.js?v=4"></script>
-  <script src="assets/js/gradient-wave.js?v=4" defer></script>
+  <script src="assets/js/app.js?v=5"></script>
+  <script src="assets/js/gradient-wave.js?v=5" defer></script>
 </body>
 </html>
