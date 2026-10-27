@@ -274,9 +274,11 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 }
 
 /* ================= FOTO PRODUK DI HERO ================= */
-.hero-photo{margin:40px auto 0;max-width:560px}
+.hero-photo{position:relative;margin:36px auto 0;max-width:440px}
+.hero-badge-link{position:absolute;left:60%;top:0;width:24%;height:18%;border-radius:9999px}
+.hero-badge-link:focus-visible{outline:3px solid var(--brand);outline-offset:2px}
 .hero-photo img{width:100%;height:auto;display:block}
-@media (max-width:640px){.hero-photo{margin-top:32px}}
+@media (max-width:640px){.hero-photo{margin-top:28px;max-width:340px}}
 #produk,#featured,#promo,#faq{scroll-margin-top:84px}
 .has-promo-bar #produk,.has-promo-bar #featured,.has-promo-bar #promo,.has-promo-bar #faq{scroll-margin-top:120px}
 
