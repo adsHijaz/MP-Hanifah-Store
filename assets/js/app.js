@@ -376,7 +376,7 @@
   function init() {
     if (C.brandColor) document.documentElement.style.setProperty("--brand", C.brandColor);
     document.querySelectorAll("[data-store-name]").forEach(function (el) { el.textContent = C.storeName || el.textContent; });
-    if (C.tagline) $("[data-tagline]").textContent = C.tagline;
+    if (C.tagline && $("[data-tagline]")) $("[data-tagline]").textContent = C.tagline;
     var waLink = "https://wa.me/" + C.waNumber + "?text=" + encodeURIComponent("Assalamu'alaikum, saya ingin bertanya tentang produk " + (C.storeName || ""));
     $("#footerWa").href = waLink; $("#floatWa").href = waLink;
     initPixel(C.metaPixelId);
