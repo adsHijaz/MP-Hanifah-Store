@@ -8,8 +8,8 @@
   <link rel="icon" href="assets/img/logo.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=8">
-  <script src="assets/js/config.js?v=8"></script>
+  <link rel="stylesheet" href="assets/css/style.css?v=9">
+  <script src="assets/js/config.js?v=9"></script>
 </head>
 <body>
 
@@ -32,27 +32,22 @@
   </header>
 
   <!-- HERO -->
-  <section class="hero hero-v2">
-    <img class="hero-leaf" src="assets/img/hero/daun-kiri.webp" alt="" aria-hidden="true" width="138" height="265">
+  <section class="hero">
+    <div class="hero-bg" data-gradient-wave data-colors="#EEF2FF,#FFFFFF,#C7D2FE,#F9FAFB" aria-hidden="true"></div>
     <div class="container hero-inner">
-      <div class="hero-copy">
-        <h1>Herbal pilihan yang bisa diandalkan</h1>
-        <p>Produk herbal pilihan Hanifah, sudah dipercaya ribuan pembeli di marketplace. Pesan mudah, bayar saat barang tiba.</p>
-        <div class="hero-trust">
-          <span class="trust-icon" aria-hidden="true"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
-          <ul>
-            <li>Memiliki izin edar resmi</li>
-            <li>Bayar di tempat (COD)</li>
-            <li>Konsultasi gratis via WhatsApp</li>
-          </ul>
-        </div>
-        <a href="#produk" class="btn btn-hero btn-lg">Lihat Produk</a>
+      <span class="hero-eyebrow">✔ Bayar di tempat, tanpa transfer</span>
+      <h1>Belanja Mudah,<br><span>Bayar Saat Barang Tiba</span></h1>
+      <p data-tagline>Pesan via WhatsApp, dikirim JNE, bayar di tempat (COD).</p>
+      <div class="hero-badges">
+        <span class="pill">✔ COD Bayar di Tempat</span>
+        <span class="pill">✔ Dikirim JNE</span>
+        <span class="pill">✔ Konsultasi via WA</span>
       </div>
-    </div>
-    <div class="hero-visual">
-      <img src="assets/img/hero/hero-produk-v2.webp" width="580" height="654" fetchpriority="high"
-           alt="Produk herbal Hanifah: Madu Lambung, Sari Kurma Propolis, YaconCaps, Arba'in Kapsul Gamat, Susu Kambing Etawa, Teh Rimpang, dan Madu Ar Royyan">
-      <a href="#featured" class="hero-badge-link" aria-label="Lihat produk terlaris"></a>
+      <a href="#produk" class="btn btn-primary btn-lg">Lihat Produk</a>
+      <div class="hero-photo">
+        <img src="assets/img/hero/produk-hero.webp" width="533" height="471" fetchpriority="high"
+             alt="Produk herbal Hanifah: Madu Lambung, Sari Kurma Propolis, YaconCaps, Arba'in Kapsul Gamat, Susu Kambing Etawa, Teh Rimpang, dan Madu Ar Royyan">
+      </div>
     </div>
   </section>
 
@@ -191,6 +186,7 @@
 
   <div class="toast" id="toast"></div>
 
-  <script src="assets/js/app.js?v=8"></script>
+  <script src="assets/js/app.js?v=9"></script>
+  <script src="assets/js/gradient-wave.js?v=9" defer></script>
 </body>
 </html>
