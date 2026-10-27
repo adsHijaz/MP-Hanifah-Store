@@ -285,3 +285,9 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 /* Logo header: tanpa teks, lebih besar, latar transparan */
 .brand-logo{height:38px;width:auto;max-width:none;border-radius:0}
 @media (max-width:640px){.brand-logo{height:32px}}
+
+/* Banner penuh di bawah teks hero */
+.hero-photo.hero-banner{max-width:960px;margin-top:40px}
+.hero-banner img{border-radius:20px;box-shadow:0 20px 40px -12px rgba(9,14,52,.18),0 0 0 1px rgba(9,14,52,.04);background:#fff}
+.hero-banner .hero-badge-link{left:79%;top:0;width:14%;height:17%}
+@media (max-width:640px){.hero-photo.hero-banner{max-width:none;margin-top:28px}.hero-banner img{border-radius:14px}}
