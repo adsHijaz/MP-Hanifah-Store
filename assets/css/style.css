@@ -264,3 +264,22 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
   .card-qty small{display:none}
   .sub-title,.featured-head h3{font-size:19px}
 }
+
+/* ================= HERO DENGAN FOTO PRODUK ================= */
+.hero{padding:72px 0 64px}
+.hero .hero-inner{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:40px;align-items:center;text-align:left}
+.hero .hero-copy p{margin-left:0;margin-right:0}
+.hero .hero-badges{justify-content:flex-start}
+.hero-visual{position:relative}
+.hero-visual::before{content:"";position:absolute;inset:6% 4% 0;background:radial-gradient(closest-side,rgba(255,255,255,.95),rgba(255,255,255,0));z-index:-1}
+.hero-visual img{width:100%;height:auto;display:block;filter:drop-shadow(0 24px 32px rgba(9,14,52,.10))}
+@media (max-width:900px){
+  .hero .hero-inner{grid-template-columns:1fr;gap:28px;text-align:center}
+  .hero .hero-copy p{margin-left:auto;margin-right:auto}
+  .hero .hero-badges{justify-content:center}
+  .hero-visual{max-width:560px;margin:0 auto}
+}
+@media (max-width:640px){
+  .hero{padding:48px 0 40px}
+}
+@media (min-width:901px){.hero h1{font-size:clamp(36px,4.2vw,54px)}}
