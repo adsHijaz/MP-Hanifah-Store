@@ -187,8 +187,16 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 }
 
 /* ================= PROMO ================= */
-.promo-bar{background:var(--display);color:#fff;font-size:13px;font-weight:500;text-align:center;padding:8px 16px;display:flex;flex-wrap:wrap;justify-content:center;gap:4px 12px}
+/* Bar promo: menempel di atas (statis) + teks berjalan */
+.promo-bar{position:sticky;top:0;z-index:31;height:36px;background:var(--display);color:#fff;font-size:13px;font-weight:500;overflow:hidden;display:flex;align-items:center}
+.promo-track{display:flex;width:max-content;animation:promo-run 40s linear infinite}
+.promo-bar:hover .promo-track{animation-play-state:paused}
+.promo-group{display:flex;align-items:center;gap:20px;padding-right:20px;white-space:nowrap}
 .promo-bar i{font-style:normal;color:#A5B4FC}
+@keyframes promo-run{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.promo-track{animation:none}}
+.has-promo-bar .header{top:36px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 .section-promo{padding:72px 0 0}
 .promo-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
 .promo-card{display:flex;gap:18px;align-items:flex-start;padding:28px;border-radius:var(--radius-lg);background:var(--brand);color:#fff;box-shadow:var(--shadow-md);position:relative;overflow:hidden}
@@ -270,3 +278,4 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 .hero-photo img{width:100%;height:auto;display:block}
 @media (max-width:640px){.hero-photo{margin-top:32px}}
 #produk,#featured,#promo,#faq{scroll-margin-top:84px}
+.has-promo-bar #produk,.has-promo-bar #featured,.has-promo-bar #promo,.has-promo-bar #faq{scroll-margin-top:120px}

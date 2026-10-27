@@ -226,8 +226,16 @@
     }).join("");
     var bar = $("#promoBar");
     if (bar) {
-      bar.innerHTML = cards.map(function (c) { return "<span>" + esc(c.title) + " · " + esc(c.term.replace("Min. belanja ", "min. ")) + "</span>"; }).join('<i aria-hidden="true">•</i>');
+      // Teks berjalan: isi diulang supaya selalu memenuhi layar, lalu digandakan agar putarannya mulus
+      var items = cards.map(function (c) {
+        return "<span>" + esc(c.title) + " · " + esc(c.term.replace("Min. belanja ", "min. ")) + "</span>";
+      }).concat(["<span>Bayar di tempat (COD) · Dikirim JNE</span>"]);
+      var group = "";
+      for (var r = 0; r < 3; r++) group += items.map(function (t) { return t + '<i aria-hidden="true">•</i>'; }).join("");
+      bar.innerHTML = '<p class="sr-only">' + cards.map(function (c) { return esc(c.title) + ", " + esc(c.term); }).join(". ") + ".</p>" +
+        '<div class="promo-track" aria-hidden="true"><div class="promo-group">' + group + '</div><div class="promo-group">' + group + "</div></div>";
       bar.classList.remove("hidden");
+      document.body.classList.add("has-promo-bar");
     }
   }
   function promoHint(c) {
