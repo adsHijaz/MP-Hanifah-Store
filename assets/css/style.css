@@ -291,3 +291,8 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 .hero-banner img{border-radius:20px;box-shadow:0 20px 40px -12px rgba(9,14,52,.18),0 0 0 1px rgba(9,14,52,.04);background:#fff}
 .hero-banner .hero-badge-link{left:79%;top:0;width:14%;height:17%}
 @media (max-width:640px){.hero-photo.hero-banner{max-width:none;margin-top:28px}.hero-banner img{border-radius:14px}}
+
+/* Latar hero hijau (cadangan bila animasi tidak jalan) */
+.hero{background:linear-gradient(180deg,#EAF5E2,#fff 75%)}
+/* Gelombang hijau dibuat lebih lembut agar teks hero tetap terbaca */
+.hero-bg.is-ready{opacity:.5}
