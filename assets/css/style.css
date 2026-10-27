@@ -279,3 +279,7 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 @media (max-width:640px){.hero-photo{margin-top:32px}}
 #produk,#featured,#promo,#faq{scroll-margin-top:84px}
 .has-promo-bar #produk,.has-promo-bar #featured,.has-promo-bar #promo,.has-promo-bar #faq{scroll-margin-top:120px}
+
+/* Logo header: tanpa teks, lebih besar, latar transparan */
+.brand-logo{height:48px;width:auto;max-width:none;border-radius:0}
+@media (max-width:640px){.brand-logo{height:40px}}
