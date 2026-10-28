@@ -30,9 +30,11 @@ data/products.csv     Daftar produk
 
 Kolom wajib di `data/products.csv`:
 
-| kode | nama | harga | kategori | deskripsi | foto | aktif | unggulan |
-|---|---|---|---|---|---|---|---|
-| Kode barang Accurate | Nama produk | Angka saja | Untuk filter | Singkat | Link gambar (opsional) | `ya` / `tidak` | `ya` = tampil di carousel "Terlaris" |
+| kode | nama | harga | harga_coret | kategori | deskripsi | foto | aktif | unggulan |
+|---|---|---|---|---|---|---|---|---|
+| Kode barang Accurate | Nama produk | Harga jual, angka saja | Harga sebelum diskon (kosongkan bila tidak diskon) | Untuk filter | Singkat | Nama file di `assets/img/produk/` atau link gambar | `ya` / `tidak` | `ya` = tampil di carousel "Terlaris" |
+
+Jika `harga_coret` lebih besar dari `harga`, kartu produk menampilkan harga coret dan label persen diskon otomatis.
 
 **Cara paling mudah (tanpa edit kode):** pakai Google Sheet.
 1. Buat Google Sheet dengan kolom di atas (baris pertama = judul kolom).

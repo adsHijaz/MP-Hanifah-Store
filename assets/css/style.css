@@ -316,3 +316,10 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
   .ht-word{font-size:clamp(25px,7.6vw,36px);top:6px}
 }
 @media (prefers-reduced-motion:reduce){.ht-word{transition:none}}
+
+/* Harga coret & persen diskon di kartu produk */
+.card-price.has-disc{display:flex;flex-direction:column;gap:2px}
+.price-was{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:var(--muted)}
+.price-was s{text-decoration-thickness:1.5px}
+.price-off{background:#FEF2F2;color:var(--danger);font-size:12px;font-weight:700;padding:1px 6px;border-radius:6px}
+.card-img img{background:#fff;object-fit:contain}

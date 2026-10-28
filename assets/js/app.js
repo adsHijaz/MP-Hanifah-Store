@@ -65,6 +65,8 @@
           .filter(function (p) { return p.kode && p.nama && String(p.aktif || "ya").toLowerCase() !== "tidak"; })
           .map(function (p) {
             p.harga = Number(String(p.harga).replace(/[^\d]/g, "")) || 0;
+            p.harga_coret = Number(String(p.harga_coret || "").replace(/[^\d]/g, "")) || 0;
+            if (p.foto && !/^(https?:)?\/\//.test(p.foto) && p.foto.indexOf("/") < 0) p.foto = "assets/img/produk/" + p.foto;
             p.kategori = p.kategori || "Lainnya";
             return p;
           });
@@ -103,6 +105,13 @@
       "<span><b>" + n + "</b><small> di keranjang</small></span>" +
       '<button data-inc="' + esc(kode) + '" aria-label="Tambah">+</button></div>';
   }
+  function priceHTML(p) {
+    var hasDisc = p.harga_coret > p.harga && p.harga > 0;
+    if (!hasDisc) return '<div class="card-price">' + rupiah(p.harga) + "</div>";
+    var off = Math.round((1 - p.harga / p.harga_coret) * 100);
+    return '<div class="card-price has-disc"><span class="price-now">' + rupiah(p.harga) + "</span>" +
+      '<span class="price-was"><s>' + rupiah(p.harga_coret) + '</s><span class="price-off">-' + off + "%</span></span></div>";
+  }
   function cardHTML(p, extraClass) {
     return '<article class="card' + (extraClass ? " " + extraClass : "") + '">' +
       '<div class="card-img"><span class="ph">' + esc(initials(p.nama)) + "</span>" + imgHTML(p) +
@@ -111,7 +120,7 @@
       '<span class="card-cat">' + esc(p.kategori) + "</span>" +
       '<h3 class="card-name">' + esc(p.nama) + "</h3>" +
       (p.deskripsi ? '<p class="card-desc">' + esc(p.deskripsi) + "</p>" : "") +
-      '<div class="card-price">' + rupiah(p.harga) + "</div>" +
+      priceHTML(p) +
       '<div class="card-action" data-act="' + esc(p.kode) + '">' + actionHTML(p.kode) + "</div>" +
       "</div></article>";
   }
