@@ -380,6 +380,20 @@
     window.fbq("init", id); window.fbq("track", "PageView");
   }
 
+  /* ---------- Teks berganti di judul hero ---------- */
+  function initHeroRotator() {
+    var box = $("#heroRotator"); if (!box) return;
+    var words = box.querySelectorAll(".ht-word"); if (words.length < 2) return;
+    var i = 0;
+    setInterval(function () {
+      var cur = words[i], next = words[(i + 1) % words.length];
+      cur.classList.remove("is-active"); cur.classList.add("is-past");
+      next.classList.remove("is-past"); void next.offsetWidth; next.classList.add("is-active");
+      setTimeout(function () { cur.classList.remove("is-past"); }, 900);
+      i = (i + 1) % words.length;
+    }, 2500);
+  }
+
   /* ---------- Inisialisasi ---------- */
   function init() {
     if (C.brandColor) document.documentElement.style.setProperty("--brand", C.brandColor);
@@ -387,6 +401,8 @@
     if (C.tagline && $("[data-tagline]")) $("[data-tagline]").textContent = C.tagline;
     var waLink = "https://wa.me/" + C.waNumber + "?text=" + encodeURIComponent("Assalamu'alaikum, saya ingin bertanya tentang produk " + (C.storeName || ""));
     $("#footerWa").href = waLink; $("#floatWa").href = waLink;
+    if ($("#heroWa")) $("#heroWa").href = waLink;
+    initHeroRotator();
     initPixel(C.metaPixelId);
 
     document.addEventListener("click", function (e) {

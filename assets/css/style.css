@@ -296,3 +296,23 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 .hero{background:linear-gradient(180deg,#E6EFF8,#fff 75%)}
 /* Gelombang biru dibuat lebih lembut agar teks hero tetap terbaca */
 .hero-bg.is-ready{opacity:.5}
+
+/* ================= HERO BERANIMASI (judul berganti) ================= */
+.hero-eyebrow-link{gap:8px;transition:background .15s,border-color .15s}
+.hero-eyebrow-link:hover{background:var(--brand-soft);border-color:var(--brand)}
+.hero-title{display:flex;flex-direction:column;align-items:center;font-size:clamp(34px,6.2vw,72px);line-height:1.08;letter-spacing:-.03em}
+.hero h1 .ht-static{font-weight:500;color:var(--display)}
+.ht-rotator{position:relative;display:flex;justify-content:center;width:100%;overflow:hidden;padding:4px 0 14px}
+.ht-word{position:absolute;top:4px;left:0;right:0;text-align:center;white-space:nowrap;font-weight:700;color:var(--brand);
+  opacity:0;visibility:hidden;transform:translateY(150%);transition:transform .9s cubic-bezier(.34,1.45,.64,1),opacity .5s ease,visibility 0s linear .9s}
+.ht-word.is-active{opacity:1;visibility:visible;transform:translateY(0);transition-delay:0s}
+.ht-word.is-past{opacity:0;visibility:visible;transform:translateY(-150%);transition-delay:0s}
+.hero-lead{margin:14px auto 28px!important;max-width:640px!important;font-size:clamp(16px,1.6vw,20px)!important;line-height:1.6}
+.hero-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
+.btn-outline{background:#fff;border:1px solid var(--line-strong);color:var(--ink)}
+.btn-outline:hover{border-color:var(--brand);color:var(--brand)}
+@media (max-width:640px){
+  .hero-title{font-size:clamp(28px,8.6vw,40px)}
+  .ht-word{font-size:clamp(25px,7.6vw,36px);top:6px}
+}
+@media (prefers-reduced-motion:reduce){.ht-word{transition:none}}
