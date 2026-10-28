@@ -296,3 +296,28 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 .hero{background:linear-gradient(180deg,#EAF5E2,#fff 75%)}
 /* Gelombang hijau dibuat lebih lembut agar teks hero tetap terbaca */
 .hero-bg.is-ready{opacity:.5}
+
+/* ================= AURORA BACKGROUND (hero) =================
+   Versi CSS biasa dari komponen Aceternity "Aurora Background", warna hijau Hanifah */
+.hero{background:#FAFAFA;position:relative;overflow:hidden}
+.hero-aurora{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.hero-aurora .aurora{
+  --white-gradient:repeating-linear-gradient(100deg,#fff 0%,#fff 7%,transparent 10%,transparent 12%,#fff 16%);
+  --aurora:repeating-linear-gradient(100deg,var(--a1) 10%,var(--a2) 15%,var(--a3) 20%,var(--a4) 25%,var(--a5) 30%);
+  --a1:#318B07;--a2:#7CC24A;--a3:#B7E09A;--a4:#D3EDC7;--a5:#5FAE2E;
+  position:absolute;inset:-10px;opacity:.6;
+  background-image:var(--white-gradient),var(--aurora);
+  background-size:300%,200%;background-position:50% 50%,50% 50%;
+  filter:blur(10px) invert(1);will-change:transform;
+  -webkit-mask-image:radial-gradient(ellipse at 100% 0%,#000 10%,transparent 70%);
+  mask-image:radial-gradient(ellipse at 100% 0%,#000 10%,transparent 70%);
+}
+.hero-aurora .aurora::after{
+  content:"";position:absolute;inset:0;
+  background-image:var(--white-gradient),var(--aurora);
+  background-size:200%,100%;background-attachment:fixed;mix-blend-mode:difference;
+  animation:aurora 60s linear infinite;
+}
+@keyframes aurora{from{background-position:50% 50%,50% 50%}to{background-position:350% 50%,350% 50%}}
+@media (prefers-reduced-motion:reduce){.hero-aurora .aurora::after{animation:none}}
+.hero .hero-inner{position:relative;z-index:1}
