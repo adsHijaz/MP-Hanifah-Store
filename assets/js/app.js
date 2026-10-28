@@ -428,8 +428,6 @@
     }
     function play() { if (reduce || n < 2) return; stop(); timer = setInterval(function () { go(cur + 1); }, 5000); }
     function stop() { if (timer) clearInterval(timer); timer = null; }
-    $("#hsPrev").addEventListener("click", function () { go(cur - 1); play(); });
-    $("#hsNext").addEventListener("click", function () { go(cur + 1); play(); });
     dots.addEventListener("click", function (e) { var b = e.target.closest("[data-hs]"); if (b) { go(Number(b.dataset.hs)); play(); } });
     var st;
     track.addEventListener("scroll", function () {

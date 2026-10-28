@@ -349,3 +349,6 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
   .hs-prev{left:8px}.hs-next{right:8px}
   .hs-nav{width:36px;height:36px;font-size:22px;background:rgba(255,255,255,.9)}
 }
+.hs-dots{margin-top:12px}
+.hs-dots button{width:6px;height:6px}
+.hs-dots button.on{width:18px}
