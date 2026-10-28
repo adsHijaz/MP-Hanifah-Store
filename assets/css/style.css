@@ -304,7 +304,7 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 .hero-aurora .aurora{
   --white-gradient:repeating-linear-gradient(100deg,#fff 0%,#fff 7%,transparent 10%,transparent 12%,#fff 16%);
   --aurora:repeating-linear-gradient(100deg,var(--a1) 10%,var(--a2) 15%,var(--a3) 20%,var(--a4) 25%,var(--a5) 30%);
-  --a1:#318B07;--a2:#7CC24A;--a3:#B7E09A;--a4:#D3EDC7;--a5:#5FAE2E;
+  --a1:#111827;--a2:#6B7280;--a3:#9CA3AF;--a4:#D1D5DB;--a5:#374151;
   position:absolute;inset:-10px;opacity:.6;
   background-image:var(--white-gradient),var(--aurora);
   background-size:300%,200%;background-position:50% 50%,50% 50%;
