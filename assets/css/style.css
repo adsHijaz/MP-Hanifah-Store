@@ -328,3 +328,24 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 .card-img img{object-fit:cover}
 .card-feat .card-img{aspect-ratio:1/1;min-height:0!important;align-self:center}
 .card-feat{align-items:center}
+
+/* ================= CAROUSEL FOTO DI HERO ================= */
+.hero-slider{position:relative;max-width:440px;margin:40px auto 0}
+.hs-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;border-radius:20px;
+  box-shadow:0 24px 48px -16px rgba(9,14,52,.22),0 0 0 1px rgba(9,14,52,.05);background:#fff}
+.hs-track::-webkit-scrollbar{display:none}
+.hs-slide{flex:0 0 100%;margin:0;scroll-snap-align:center}
+.hs-slide img{width:100%;height:auto;display:block}
+.hs-nav{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:9999px;background:#fff;
+  border:1px solid var(--line);box-shadow:var(--shadow-md);font-size:26px;line-height:1;color:var(--ink);display:grid;place-items:center;z-index:2}
+.hs-nav:hover{color:var(--brand);border-color:var(--brand)}
+.hs-prev{left:-64px}.hs-next{right:-64px}
+.hs-dots{display:flex;justify-content:center;gap:8px;margin-top:16px}
+.hs-dots button{width:8px;height:8px;border-radius:9999px;background:rgba(9,14,52,.2);transition:.25s}
+.hs-dots button.on{width:26px;background:var(--brand)}
+@media (max-width:640px){
+  .hero-slider{max-width:none;margin-top:28px}
+  .hs-track{border-radius:14px}
+  .hs-prev{left:8px}.hs-next{right:8px}
+  .hs-nav{width:36px;height:36px;font-size:22px;background:rgba(255,255,255,.9)}
+}

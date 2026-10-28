@@ -8,8 +8,8 @@
   <link rel="icon" href="assets/img/favicon.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=21">
-  <script src="assets/js/config.js?v=21"></script>
+  <link rel="stylesheet" href="assets/css/style.css?v=22">
+  <script src="assets/js/config.js?v=22"></script>
 </head>
 <body>
 
@@ -51,10 +51,24 @@
         <a href="#produk" class="btn btn-primary btn-lg">Lihat Produk
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8l4 4-4 4"/><path d="M2 12h20"/></svg></a>
       </div>
-      <div class="hero-photo hero-banner">
-        <img src="assets/img/hero/banner-hero.webp" width="1080" height="654" fetchpriority="high"
-             alt="Herbal pilihan yang bisa diandalkan. Produk herbal pilihan Hanifah, sudah dipercaya ribuan pembeli di marketplace. Pesan mudah, bayar saat barang tiba. Memiliki izin edar resmi, bayar di tempat (COD), konsultasi gratis via WhatsApp.">
-        <a href="#featured" class="hero-badge-link" aria-label="Lihat produk terlaris"></a>
+      <div class="hero-slider" id="heroSlider" aria-roledescription="carousel" aria-label="Info produk Hanifah">
+        <div class="hs-track" id="hsTrack">
+          <figure class="hs-slide" aria-roledescription="slide" aria-label="1 dari 2">
+            <img src="assets/img/hero/slide-alasan-hanifah.webp"
+                 srcset="assets/img/hero/slide-alasan-hanifah-sm.webp 640w, assets/img/hero/slide-alasan-hanifah.webp 1000w"
+                 sizes="(max-width: 640px) 92vw, 440px" width="1000" height="1400" fetchpriority="high"
+                 alt="Alasan tepat memilih Hanifah Herbal: diformulasikan dari herbal berkualitas tinggi, produk legal, teruji dan sesuai standar, pendamping gaya hidup sehat, pelayanan ramah dan terpercaya. Tampak Sari Kurma Propolis, Madu Lambung Hanifah, Gamat Gen, dan YaconCaps.">
+          </figure>
+          <figure class="hs-slide" aria-roledescription="slide" aria-label="2 dari 2">
+            <img src="assets/img/hero/slide-best-seller-habasyi.webp"
+                 srcset="assets/img/hero/slide-best-seller-habasyi-sm.webp 640w, assets/img/hero/slide-best-seller-habasyi.webp 1000w"
+                 sizes="(max-width: 640px) 92vw, 440px" width="1000" height="1400" loading="lazy"
+                 alt="Best seller: Kapsul Habbatussauda' Oil Habasyi isi 200 kapsul. Habasyi murni, menjaga stamina, antioksidan alami.">
+          </figure>
+        </div>
+        <button class="hs-nav hs-prev" id="hsPrev" aria-label="Slide sebelumnya">‹</button>
+        <button class="hs-nav hs-next" id="hsNext" aria-label="Slide berikutnya">›</button>
+        <div class="hs-dots" id="hsDots"></div>
       </div>
     </div>
   </section>
@@ -194,7 +208,7 @@
 
   <div class="toast" id="toast"></div>
 
-  <script src="assets/js/app.js?v=21"></script>
-  <script src="assets/js/gradient-wave.js?v=21" defer></script>
+  <script src="assets/js/app.js?v=22"></script>
+  <script src="assets/js/gradient-wave.js?v=22" defer></script>
 </body>
 </html>

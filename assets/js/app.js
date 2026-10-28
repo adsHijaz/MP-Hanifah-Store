@@ -409,6 +409,40 @@
     }, 2500);
   }
 
+  /* ---------- Carousel foto di hero ---------- */
+  function initHeroSlider() {
+    var root = $("#heroSlider"); if (!root) return;
+    var track = $("#hsTrack"), slides = track.children, n = slides.length, dots = $("#hsDots");
+    var cur = 0, timer = null, busy = false, busyT, reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    dots.innerHTML = Array.prototype.map.call(slides, function (_, i) {
+      return '<button aria-label="Ke slide ' + (i + 1) + '" data-hs="' + i + '"></button>';
+    }).join("");
+    function go(i, smooth) {
+      cur = (i + n) % n;
+      busy = true; clearTimeout(busyT); busyT = setTimeout(function () { busy = false; }, 800);
+      track.scrollTo({ left: cur * track.clientWidth, behavior: smooth === false ? "auto" : "smooth" });
+      mark();
+    }
+    function mark() {
+      Array.prototype.forEach.call(dots.children, function (d, i) { d.classList.toggle("on", i === cur); d.setAttribute("aria-current", i === cur ? "true" : "false"); });
+    }
+    function play() { if (reduce || n < 2) return; stop(); timer = setInterval(function () { go(cur + 1); }, 5000); }
+    function stop() { if (timer) clearInterval(timer); timer = null; }
+    $("#hsPrev").addEventListener("click", function () { go(cur - 1); play(); });
+    $("#hsNext").addEventListener("click", function () { go(cur + 1); play(); });
+    dots.addEventListener("click", function (e) { var b = e.target.closest("[data-hs]"); if (b) { go(Number(b.dataset.hs)); play(); } });
+    var st;
+    track.addEventListener("scroll", function () {
+      clearTimeout(st);
+      st = setTimeout(function () { if (busy) return; var i = Math.round(track.scrollLeft / track.clientWidth); if (i !== cur) { cur = i; mark(); } }, 120);
+    }, { passive: true });
+    root.addEventListener("mouseenter", stop); root.addEventListener("mouseleave", play);
+    root.addEventListener("touchstart", stop, { passive: true }); root.addEventListener("touchend", play);
+    document.addEventListener("visibilitychange", function () { if (document.hidden) stop(); else play(); });
+    window.addEventListener("resize", function () { go(cur, false); });
+    mark(); play();
+  }
+
   /* ---------- Inisialisasi ---------- */
   function init() {
     if (C.brandColor) document.documentElement.style.setProperty("--brand", C.brandColor);
@@ -418,6 +452,7 @@
     $("#footerWa").href = waLink; $("#floatWa").href = waLink;
     if ($("#heroWa")) $("#heroWa").href = waLink;
     initHeroRotator();
+    initHeroSlider();
     initPixel(C.metaPixelId);
 
     document.addEventListener("click", function (e) {
