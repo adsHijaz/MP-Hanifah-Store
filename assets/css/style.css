@@ -323,3 +323,8 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 .price-was s{text-decoration-thickness:1.5px}
 .price-off{background:#FEF2F2;color:var(--danger);font-size:12px;font-weight:700;padding:1px 6px;border-radius:6px}
 .card-img img{background:#fff;object-fit:contain}
+.card-price.price-ask{font-size:15px;color:var(--muted);font-weight:600}
+.card-action .btn-wa{width:100%}
+.card-img img{object-fit:cover}
+.card-feat .card-img{aspect-ratio:1/1;min-height:0!important;align-self:center}
+.card-feat{align-items:center}

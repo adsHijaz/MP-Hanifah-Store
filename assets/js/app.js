@@ -99,13 +99,19 @@
   }
   /* Tombol di kartu: "+ Keranjang", atau pengatur jumlah jika sudah di keranjang */
   function actionHTML(kode) {
+    var pr = findP(kode);
+    if (pr && !pr.harga) return '<a class="btn btn-wa card-add" href="' + askWaUrl(pr) + '" target="_blank" rel="noopener">Tanya Harga</a>';
     var n = cart[kode] || 0;
     if (!n) return '<button class="btn btn-primary card-add" data-add="' + esc(kode) + '">+ Keranjang</button>';
     return '<div class="card-qty"><button data-dec="' + esc(kode) + '" aria-label="Kurangi">−</button>' +
       "<span><b>" + n + "</b><small> di keranjang</small></span>" +
       '<button data-inc="' + esc(kode) + '" aria-label="Tambah">+</button></div>';
   }
+  function askWaUrl(p) {
+    return "https://wa.me/" + C.waNumber + "?text=" + encodeURIComponent("Assalamu'alaikum, saya ingin tanya harga " + p.nama + " [" + p.kode + "]");
+  }
   function priceHTML(p) {
+    if (!p.harga) return '<div class="card-price price-ask">Harga via WA</div>';
     var hasDisc = p.harga_coret > p.harga && p.harga > 0;
     if (!hasDisc) return '<div class="card-price">' + rupiah(p.harga) + "</div>";
     var off = Math.round((1 - p.harga / p.harga_coret) * 100);
@@ -266,7 +272,7 @@
     else box.textContent = "Di luar Jabodetabek: ongkir JNE dikonfirmasi admin.";
   }
   function addToCart(kode) {
-    var p = findP(kode); if (!p) return;
+    var p = findP(kode); if (!p || !p.harga) return;
     cart[kode] = (cart[kode] || 0) + 1; saveCart(); renderCart();
     toast(p.nama + " masuk keranjang");
     track("AddToCart", { content_ids: [kode], content_name: p.nama, value: p.harga, currency: "IDR" });

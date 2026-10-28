@@ -1,9 +1,15 @@
-kode,nama,harga,kategori,deskripsi,foto,aktif,unggulan
-BRG-001,Kurma Ajwa 500 gr,185000,Makanan,"Kurma ajwa premium, kemasan 500 gram.",,ya,ya
-BRG-002,Madu Hutan 250 ml,95000,Makanan,Madu hutan murni dalam botol kaca 250 ml.,,ya,ya
-BRG-003,Minyak Zaitun 100 ml,65000,Kesehatan,"Extra virgin olive oil, cocok untuk konsumsi dan perawatan.",,ya,ya
-BRG-004,Habbatussauda 100 kapsul,55000,Kesehatan,Kapsul jintan hitam isi 100.,,ya,ya
-BRG-005,Sajadah Lipat Travel,75000,Perlengkapan Ibadah,"Ringan, mudah dilipat, cocok untuk bepergian.",,ya,ya
-BRG-006,Siwak Kemasan,15000,Perlengkapan Ibadah,Siwak alami dalam kemasan higienis.,,ya,
-BRG-007,Parfum Non-Alkohol 6 ml,45000,Perawatan,Parfum roll-on tanpa alkohol.,,ya,
-BRG-008,Buku Doa Harian,35000,Buku,Kumpulan doa harian dari Al-Qur'an dan Sunnah.,,ya,
+kode,nama,harga,harga_coret,kategori,deskripsi,foto,aktif,unggulan
+HNF-01,Madu Lambung Hanifah 350 gr,,,Madu,"Madu Lambung Hanifah dalam botol, netto 350 gram. Terdaftar POM TR.",madu-lambung-hanifah.webp,ya,ya
+HNF-02,Sari Kurma Propolis,,,Minuman Herbal,Sari kurma Hanifah dengan tambahan ekstrak propolis.,sari-kurma-propolis.webp,ya,ya
+HNF-03,Madu Hutan Ar Royyan 500 gr,,,Madu,"Madu hutan dengan bee pollen, kemasan jeriken netto 500 gram.",madu-ar-royyan-500gr.webp,ya,ya
+HNF-04,Madu Hutan Ar Royyan 1 kg,,,Madu,"Madu hutan dengan bee pollen, kemasan jeriken netto 1 kg.",madu-ar-royyan-1kg.webp,ya,
+HNF-05,Madu Hutan Mazaya,,,Madu,"Madu hutan Mazaya, raw honey Sumatra. Tersedia 1 kg dan 500 gr.",madu-hutan-mazaya.webp,ya,
+HNF-06,Gurah Syrup 125 ml,,,Minuman Herbal,"Sirup herbal dengan madu, sambiloto, propolis, habbatussauda, dan royal jelly. Netto 125 ml, untuk anak dan dewasa.",gurah-syrup.webp,ya,ya
+HNF-07,YaconCaps 50 kapsul,,,Kapsul Herbal,"Kapsul ekstrak daun yacon (Smallanthus sonchifolius), isi 50 kapsul @500 mg. Terdaftar POM TR.",yaconcaps.webp,ya,ya
+HNF-08,Arba'in Kapsul Gamat 60 kapsul,,,Kapsul Herbal,Kapsul gamat isi 60 kapsul. Terdaftar POM TR.,arbain-kapsul-gamat.webp,ya,
+HNF-09,Kapsul Minyak Habbah + Zaitun,,,Kapsul Herbal,"Kapsul 2 in 1 minyak habbatussauda dan zaitun, isi 200 kapsul @0,55 ml.",kapsul-habbah-zaitun.webp,ya,
+HNF-10,Minyak Habbatussauda Al-Hijaz,,,Minyak Herbal,100% minyak jintan hitam (black seed oil) dalam botol.,minyak-habbatussauda-60ml.webp,ya,
+HNF-11,Minyak Zaitun Extra Virgin Al-Hijaz,,,Minyak Herbal,100% minyak zaitun extra virgin dalam botol.,minyak-zaitun-60ml.webp,ya,
+HNF-12,Teh Celup Rimpang Hanifah,,,Minuman Herbal,"Teh celup dari aneka rimpang, isi 20 kantong.",teh-celup-rimpang.webp,ya,
+HNF-13,Susu Bubuk Kambing Etawa Al-Hijaz 250 gr,,,Minuman Herbal,"Susu bubuk kambing etawa instan, berat bersih 250 gram. BPOM RI MD.",susu-kambing-etawa.webp,ya,
+HNF-14,Choco Stone,,,Camilan,Cokelat berbentuk batu warna-warni dalam toples.,choco-stone.webp,ya,
