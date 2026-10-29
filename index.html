@@ -8,7 +8,7 @@
   <link rel="icon" href="assets/img/favicon.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=23">
+  <link rel="stylesheet" href="assets/css/style.css?v=24">
   <script src="assets/js/config.js?v=23"></script>
 </head>
 <body>
@@ -204,9 +204,30 @@
     </div>
   </aside>
 
+  <!-- POP-UP DETAIL PRODUK -->
+  <div class="pm" id="pm" aria-hidden="true">
+    <div class="pm-backdrop" data-pm-close></div>
+    <div class="pm-panel" role="dialog" aria-modal="true" aria-labelledby="pmName">
+      <button class="pm-close" id="pmClose" data-pm-close aria-label="Tutup">✕</button>
+      <div class="pm-media" id="pmMedia">
+        <span class="ph" id="pmPh"></span>
+        <img id="pmImg" alt="">
+        <span class="pm-hint" id="pmHint">Ketuk foto untuk memperbesar</span>
+      </div>
+      <div class="pm-info">
+        <span class="card-cat" id="pmCat"></span>
+        <h2 class="pm-name" id="pmName"></h2>
+        <div id="pmPrice"></div>
+        <p class="pm-desc" id="pmDesc"></p>
+        <div class="card-action pm-action" id="pmAction"></div>
+        <a class="pm-ask" id="pmAsk" target="_blank" rel="noopener">Tanya produk ini via WhatsApp</a>
+      </div>
+    </div>
+  </div>
+
   <div class="toast" id="toast"></div>
 
-  <script src="assets/js/app.js?v=23"></script>
-  <script src="assets/js/gradient-wave.js?v=23" defer></script>
+  <script src="assets/js/app.js?v=24"></script>
+  <script src="assets/js/gradient-wave.js?v=24" defer></script>
 </body>
 </html>

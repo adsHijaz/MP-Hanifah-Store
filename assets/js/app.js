@@ -120,8 +120,9 @@
   }
   function cardHTML(p, extraClass) {
     return '<article class="card' + (extraClass ? " " + extraClass : "") + '">' +
-      '<div class="card-img"><span class="ph">' + esc(initials(p.nama)) + "</span>" + imgHTML(p) +
-      (extraClass ? '<span class="card-flag">Terlaris</span>' : "") + "</div>" +
+      '<div class="card-img" data-view="' + esc(p.kode) + '" role="button" tabindex="0" aria-label="Lihat detail ' + esc(p.nama) + '">' +
+      '<span class="ph">' + esc(initials(p.nama)) + "</span>" + imgHTML(p) +
+      (extraClass ? '<span class="card-flag">Terlaris</span>' : "") + ZOOM_ICON + "</div>" +
       '<div class="card-body">' +
       '<span class="card-cat">' + esc(p.kategori) + "</span>" +
       '<h3 class="card-name">' + esc(p.nama) + "</h3>" +
@@ -130,6 +131,69 @@
       '<div class="card-action" data-act="' + esc(p.kode) + '">' + actionHTML(p.kode) + "</div>" +
       "</div></article>";
   }
+  var ZOOM_ICON = '<span class="card-zoom" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5M11 8v6M8 11h6"/></svg></span>';
+
+  /* ---------- Pop-up detail produk ---------- */
+  var pmLast = null, pmMoved = false, pmDown = null;
+  function openProduct(kode, trigger) {
+    var p = findP(kode); if (!p) return;
+    pmLast = trigger || document.activeElement;
+    var media = $("#pmMedia"), img = $("#pmImg");
+    media.classList.remove("zoomed"); img.style.transformOrigin = "50% 50%";
+    $("#pmPh").textContent = initials(p.nama);
+    if (p.foto) { img.src = p.foto; img.alt = p.nama; img.hidden = false; $("#pmHint").hidden = false; }
+    else { img.removeAttribute("src"); img.hidden = true; $("#pmHint").hidden = true; }
+    $("#pmCat").textContent = p.kategori;
+    $("#pmName").textContent = p.nama;
+    $("#pmPrice").innerHTML = priceHTML(p);
+    $("#pmDesc").textContent = p.deskripsi || "";
+    $("#pmDesc").hidden = !p.deskripsi;
+    var act = $("#pmAction"); act.setAttribute("data-act", p.kode); act.innerHTML = actionHTML(p.kode);
+    $("#pmAsk").href = askWaUrl(p).replace("tanya harga", "tanya tentang");
+    $("#pm").classList.add("open"); $("#pm").setAttribute("aria-hidden", "false");
+    document.body.classList.add("pm-lock");
+    setTimeout(function () { $("#pmClose").focus(); }, 30);
+    track("ViewContent", { content_ids: [p.kode], content_name: p.nama, value: p.harga, currency: "IDR" });
+  }
+  function closeProduct() {
+    var m = $("#pm"); if (!m.classList.contains("open")) return false;
+    m.classList.remove("open"); m.setAttribute("aria-hidden", "true");
+    $("#pmAction").removeAttribute("data-act");
+    document.body.classList.remove("pm-lock");
+    if (pmLast && pmLast.focus) { try { pmLast.focus({ preventScroll: true }); } catch (e) {} }
+    return true;
+  }
+  function pmOrigin(e) {
+    var r = $("#pmMedia").getBoundingClientRect();
+    var x = Math.min(100, Math.max(0, (e.clientX - r.left) / r.width * 100));
+    var y = Math.min(100, Math.max(0, (e.clientY - r.top) / r.height * 100));
+    $("#pmImg").style.transformOrigin = x + "% " + y + "%";
+  }
+  function initProductModal() {
+    var media = $("#pmMedia");
+    media.addEventListener("pointerdown", function (e) { pmDown = { x: e.clientX, y: e.clientY }; pmMoved = false; });
+    media.addEventListener("pointermove", function (e) {
+      if (pmDown && Math.abs(e.clientX - pmDown.x) + Math.abs(e.clientY - pmDown.y) > 8) pmMoved = true;
+      if (media.classList.contains("zoomed") && (e.pointerType === "mouse" || pmDown)) pmOrigin(e);
+    });
+    media.addEventListener("pointerup", function () { pmDown = null; });
+    media.addEventListener("click", function (e) {
+      if ($("#pmImg").hidden) return;
+      if (pmMoved && media.classList.contains("zoomed")) { pmMoved = false; return; }
+      pmOrigin(e); media.classList.toggle("zoomed");
+    });
+    document.querySelectorAll("[data-pm-close]").forEach(function (el) { el.addEventListener("click", closeProduct); });
+    // jaga fokus tetap di dalam pop-up
+    $("#pm").addEventListener("keydown", function (e) {
+      if (e.key !== "Tab") return;
+      var f = Array.prototype.filter.call($("#pm").querySelectorAll("button, a[href]"), function (el) { return el.offsetParent !== null; });
+      if (!f.length) return;
+      var first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    });
+  }
+
   function updateActions() {
     document.querySelectorAll("[data-act]").forEach(function (el) {
       el.innerHTML = actionHTML(el.getAttribute("data-act"));
@@ -454,6 +518,8 @@
     initPixel(C.metaPixelId);
 
     document.addEventListener("click", function (e) {
+      var v = e.target.closest("[data-view]");
+      if (v) { openProduct(v.getAttribute("data-view"), v); return; }
       var t = e.target.closest("[data-add],[data-inc],[data-dec],[data-del],[data-cat],[data-fpage]");
       if (!t) return;
       if (t.dataset.add) addToCart(t.dataset.add);
@@ -471,7 +537,7 @@
     var navT;
     $("#featuredTrack").addEventListener("scroll", function () { clearTimeout(navT); navT = setTimeout(updateFeaturedNav, 60); }, { passive: true });
     window.addEventListener("resize", function () { clearTimeout(navT); navT = setTimeout(updateFeaturedNav, 150); });
-    $("#openCart").addEventListener("click", openDrawer);
+    $("#openCart").addEventListener("click", function () { closeProduct(); openDrawer(); });
     $("#closeCart").addEventListener("click", closeDrawer);
     $("#overlay").addEventListener("click", closeDrawer);
     $("#doneClose").addEventListener("click", closeDrawer);
@@ -484,7 +550,12 @@
     $("#stepCheckout").kota.addEventListener("input", updateShipStatus);
     $("#stepCheckout").kecamatan.addEventListener("input", updateShipStatus);
     renderPromos();
-    document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeDrawer(); });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") { if (!closeProduct()) closeDrawer(); return; }
+      var v = (e.key === "Enter" || e.key === " ") && e.target.closest && e.target.closest("[data-view]");
+      if (v) { e.preventDefault(); openProduct(v.getAttribute("data-view"), v); }
+    });
+    initProductModal();
 
     renderCart();
     loadProducts();
