@@ -1,15 +1,34 @@
 kode,nama,harga,harga_coret,kategori,deskripsi,foto,aktif,unggulan
-HNF-01,Madu Lambung Hanifah 350 gr,,,Madu,"Madu Lambung Hanifah dalam botol, netto 350 gram. Terdaftar POM TR.",madu-lambung-hanifah.webp,ya,ya
-HNF-02,Sari Kurma Propolis,,,Minuman Herbal,Sari kurma Hanifah dengan tambahan ekstrak propolis.,sari-kurma-propolis.webp,ya,ya
-HNF-03,Madu Hutan Ar Royyan 500 gr,,,Madu,"Madu hutan dengan bee pollen, kemasan jeriken netto 500 gram.",madu-ar-royyan-500gr.webp,ya,ya
-HNF-04,Madu Hutan Ar Royyan 1 kg,,,Madu,"Madu hutan dengan bee pollen, kemasan jeriken netto 1 kg.",madu-ar-royyan-1kg.webp,ya,
+HNF-01,Madu Lambung Hanifah 350 gr,65000,97000,Madu,"Madu Lambung Hanifah dalam botol, netto 350 gram. Terdaftar POM TR.",madu-lambung-hanifah.webp,ya,ya
+HNF-02,Sari Kurma Propolis,41000,50000,Minuman Herbal,Sari kurma Hanifah dengan tambahan ekstrak propolis.,sari-kurma-propolis.webp,ya,ya
+HNF-03,Madu Hutan Ar Royyan 500 gr,55000,70000,Madu,"Madu hutan dengan bee pollen, kemasan jeriken netto 500 gram.",madu-ar-royyan-500gr.webp,ya,ya
+HNF-04,Madu Hutan Ar Royyan 1 kg,85000,130000,Madu,"Madu hutan dengan bee pollen, kemasan jeriken netto 1 kg.",madu-ar-royyan-1kg.webp,ya,
 HNF-05,Madu Hutan Mazaya,,,Madu,"Madu hutan Mazaya, raw honey Sumatra. Tersedia 1 kg dan 500 gr.",madu-hutan-mazaya.webp,ya,
-HNF-06,Gurah Syrup 125 ml,,,Minuman Herbal,"Sirup herbal dengan madu, sambiloto, propolis, habbatussauda, dan royal jelly. Netto 125 ml, untuk anak dan dewasa.",gurah-syrup.webp,ya,ya
-HNF-07,YaconCaps 50 kapsul,,,Kapsul Herbal,"Kapsul ekstrak daun yacon (Smallanthus sonchifolius), isi 50 kapsul @500 mg. Terdaftar POM TR.",yaconcaps.webp,ya,ya
-HNF-08,Arba'in Kapsul Gamat 60 kapsul,,,Kapsul Herbal,Kapsul gamat isi 60 kapsul. Terdaftar POM TR.,arbain-kapsul-gamat.webp,ya,
+HNF-06,Gurah Hanifah 125 ml,50000,69000,Minuman Herbal,"Sirup herbal dengan madu, sambiloto, propolis, habbatussauda, dan royal jelly. Netto 125 ml, untuk anak dan dewasa.",gurah-syrup.webp,ya,ya
+HNF-07,YaconCaps 50 kapsul,50000,55000,Kapsul Herbal,"Kapsul ekstrak daun yacon (Smallanthus sonchifolius), isi 50 kapsul @500 mg. Terdaftar POM TR.",yaconcaps.webp,ya,ya
+HNF-08,Arba'in Kapsul Gamat 60 kapsul,50000,65000,Kapsul Herbal,Kapsul gamat isi 60 kapsul. Terdaftar POM TR.,arbain-kapsul-gamat.webp,ya,
 HNF-09,Kapsul Minyak Habbah + Zaitun,,,Kapsul Herbal,"Kapsul 2 in 1 minyak habbatussauda dan zaitun, isi 200 kapsul @0,55 ml.",kapsul-habbah-zaitun.webp,ya,
-HNF-10,Minyak Habbatussauda Al-Hijaz,,,Minyak Herbal,100% minyak jintan hitam (black seed oil) dalam botol.,minyak-habbatussauda-60ml.webp,ya,
-HNF-11,Minyak Zaitun Extra Virgin Al-Hijaz,,,Minyak Herbal,100% minyak zaitun extra virgin dalam botol.,minyak-zaitun-60ml.webp,ya,
-HNF-12,Teh Celup Rimpang Hanifah,,,Minuman Herbal,"Teh celup dari aneka rimpang, isi 20 kantong.",teh-celup-rimpang.webp,ya,
-HNF-13,Susu Bubuk Kambing Etawa Al-Hijaz 250 gr,,,Minuman Herbal,"Susu bubuk kambing etawa instan, berat bersih 250 gram. BPOM RI MD.",susu-kambing-etawa.webp,ya,
-HNF-14,Choco Stone,,,Camilan,Cokelat berbentuk batu warna-warni dalam toples.,choco-stone.webp,ya,
+HNF-10,Minyak Habbatussauda 60 ml,45000,65000,Minyak Herbal,100% minyak jintan hitam (black seed oil) dalam botol.,minyak-habbatussauda-60ml.webp,ya,
+HNF-11,Minyak Zaitun Extra Virgin 60 ml,25000,35000,Minyak Herbal,100% minyak zaitun extra virgin dalam botol.,minyak-zaitun-60ml.webp,ya,
+HNF-12,Teh Celup Rimpang 20 sachet,35000,50000,Minuman Herbal,"Teh celup dari aneka rimpang, isi 20 kantong.",teh-celup-rimpang.webp,ya,
+HNF-13,Susu Bubuk Kambing Etawa 250 gr,45000,50000,Minuman Herbal,"Susu bubuk kambing etawa instan, berat bersih 250 gram. BPOM RI MD.",susu-kambing-etawa.webp,ya,
+HNF-14,Choco Stone,35000,40000,Camilan,Cokelat berbentuk batu warna-warni dalam toples.,choco-stone.webp,ya,
+HNF-15,Durusul Lughah Hard Cover,86000,110000,Buku,Kitab Durusul Lughah Al-‘Arabiyah jilid 1–4 dalam satu buku bersampul keras (hard cover).,durusul-lughah-hard-cover.webp,ya,ya
+HNF-16,Kamus Durusul Lughah Jilid 1-2,15000,22000,Buku,Kamus pendamping kitab Durusul Lughah untuk jilid 1 dan 2.,kamus-durusul-lughah-jilid-1-2.webp,ya,
+HNF-17,Kamus Durusul Lughah Jilid 3-4,15000,24000,Buku,Kamus pendamping kitab Durusul Lughah untuk jilid 3 dan 4.,kamus-durusul-lughah-jilid-3-4.webp,ya,
+HNF-18,Terjemah Syarah Durusul Lughah Jilid 1,16500,36000,Buku,Terjemah dan syarah (penjelasan) kitab Durusul Lughah jilid 1 dalam bahasa Indonesia.,terjemah-syarah-durusul-lughah-jilid-1.webp,ya,
+HNF-19,Rafael Salgado 250ml,105000,150000,Minyak Herbal,"Minyak zaitun Rafael Salgado dalam botol kaca, isi 250 ml.",rafael-salgado-250ml.webp,ya,
+HNF-20,Rafael Salgado 500ml,195000,235000,Minyak Herbal,"Minyak zaitun Rafael Salgado dalam botol kaca, isi 500 ml.",rafael-salgado-500ml.webp,ya,
+HNF-21,Rafael Salgado 90ml,50000,60000,Minyak Herbal,"Minyak zaitun Rafael Salgado dalam botol kaca, isi 90 ml.",rafael-salgado-90ml.webp,ya,
+HNF-22,Date Crown Khenizi 1kg,75000,90000,Kurma,"Kurma Khenizi merek Date Crown dari Uni Emirat Arab, kemasan kotak 1 kg.",date-crown-khenizi-1kg.webp,ya,
+HNF-23,Habbatusauda 200 Kapsul,85000,124000,Kapsul Herbal,"Kapsul minyak habbatussauda Habasyi, isi 200 kapsul.",habbatusauda-200-kapsul.webp,ya,ya
+HNF-24,Habbatusauda 100 Kapsul,60000,80000,Kapsul Herbal,"Kapsul minyak habbatussauda Habasyi, isi 100 kapsul.",habbatusauda-100-kapsul.webp,ya,
+HNF-25,Alat Bekam Sammora 19 Cup,550000,920000,Alat Bekam,"Set alat bekam Sammora isi 19 cup dengan pompa, dalam tas penyimpanan.",alat-bekam-sammora-19-cup.webp,ya,ya
+HNF-26,Alat Bekam Sammora 30 Cup,650000,875000,Alat Bekam,"Set alat bekam Sammora isi 30 cup dengan pompa, dalam koper penyimpanan.",alat-bekam-sammora-30-cup.webp,ya,
+HNF-27,Alat Bekam Sammora 12 Cup,480000,550000,Alat Bekam,"Set alat bekam Sammora isi 12 cup dengan pompa, dalam tas penyimpanan.",alat-bekam-sammora-12-cup.webp,ya,
+HNF-28,Jarum Bekam Sammora 21g,55000,100000,Alat Bekam,Jarum bekam Sammora ukuran 21G.,,ya,
+HNF-29,Jarum Bekam Medilance 21g,45000,50000,Alat Bekam,"Jarum lancet Medilance ukuran 21G, steril dan sekali pakai.",jarum-bekam-medilance-21g.webp,ya,
+HNF-30,Pen Bekam Gold Sammora,110000,175000,Alat Bekam,Pen lancing Sammora warna emas untuk memasang jarum bekam.,pen-bekam-gold-sammora.webp,ya,
+HNF-31,Pen Bekam Silver Sammora,75000,120000,Alat Bekam,Pen lancing Sammora warna perak untuk memasang jarum bekam.,pen-bekam-silver-sammora.webp,ya,
+HNF-32,Madu Uray 150gr,25000,30000,Madu,"Madu Uray, netto 150 gr.",,ya,
+HNF-33,Madu Uray 12gr x 10 Sachet,40000,45000,Madu,"Madu murni Uray dalam kemasan stik, isi 10 sachet @12 gr.",madu-uray-12gr-x-10-sachet.webp,ya,ya
