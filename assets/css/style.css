@@ -293,7 +293,7 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 @media (max-width:640px){.hero-photo.hero-banner{max-width:none;margin-top:28px}.hero-banner img{border-radius:14px}}
 
 /* Latar hero biru logo Hanifah (cadangan bila animasi tidak jalan) */
-.hero{background:linear-gradient(180deg,#E6EFF8,#fff 75%)}
+.hero{background:#fff}
 /* Gelombang biru dibuat lebih lembut agar teks hero tetap terbaca */
 .hero-bg.is-ready{opacity:.5}
 
