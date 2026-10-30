@@ -1,0 +1,130 @@
+/* =========================================================
+   KONSEP "NAVY & EMAS" — lapisan gaya elegan di atas style.css
+   Hapus baris <link ... elegan.css> di index.html untuk kembali ke tampilan lama
+   ========================================================= */
+:root{
+  --navy:#0F2A47; --navy-2:#173A60; --gold:#B08A45; --gold-2:#CDB079; --gold-soft:#F3EBDA;
+  --ivory:#FBF8F2; --ivory-2:#F4EEE2; --line-warm:#E7DCC6;
+  --brand:var(--navy); --brand-dark:#091C31; --brand-soft:var(--gold-soft);
+  --display:#0B1F35; --ink:#0B1F35; --text:#3A4352; --muted:#7A7466;
+  --line:var(--line-warm); --line-strong:#D9CBAE;
+  --bg:var(--ivory); --bg-alt:var(--ivory-2); --bg-sub:var(--ivory-2);
+  --serif:"Cormorant Garamond","Cormorant",Georgia,"Times New Roman",serif;
+  --ring:0 0 0 3px rgba(176,138,69,.28);
+  --shadow-sm:0 1px 2px rgba(15,42,71,.04),0 2px 8px -2px rgba(15,42,71,.06);
+  --shadow-md:0 2px 4px rgba(15,42,71,.04),0 12px 28px -12px rgba(15,42,71,.18);
+  --shadow-lg:0 4px 8px rgba(15,42,71,.05),0 24px 48px -18px rgba(15,42,71,.25);
+}
+body{background:var(--ivory)}
+::selection{background:var(--gold-soft);color:var(--navy)}
+
+/* Huruf judul: serif klasik */
+.section-title,.sub-title,.featured-head h3,.hero-title,.step h3,.faq summary,.promo-card h3,.pm-name,.drawer-head h2{font-family:var(--serif);font-weight:600;letter-spacing:0}
+
+/* Label kecil + ornamen emas */
+.eyebrow{display:flex;align-items:center;justify-content:center;gap:14px;margin:0 0 10px;color:var(--gold);font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase}
+.eyebrow::before,.eyebrow::after{content:"";width:36px;height:1px;background:linear-gradient(90deg,transparent,var(--gold-2))}
+.eyebrow::after{transform:scaleX(-1)}
+.section-title{font-size:clamp(32px,4.4vw,48px);line-height:1.1;margin-bottom:52px;position:relative}
+.section-title::after{content:"";display:block;width:150px;height:14px;margin:16px auto 0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 14'%3E%3Cdefs%3E%3ClinearGradient id='a' x1='0' x2='1'%3E%3Cstop offset='0' stop-color='%23CDB079' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%23CDB079'/%3E%3C/linearGradient%3E%3ClinearGradient id='b' x1='1' x2='0'%3E%3Cstop offset='0' stop-color='%23CDB079' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%23CDB079'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x='0' y='6.5' width='58' height='1' fill='url(%23a)'/%3E%3Crect x='92' y='6.5' width='58' height='1' fill='url(%23b)'/%3E%3Ccircle cx='63' cy='7' r='1.6' fill='%23CDB079'/%3E%3Ccircle cx='87' cy='7' r='1.6' fill='%23CDB079'/%3E%3Cpath d='M75 1l6 6-6 6-6-6z' fill='%23B08A45'/%3E%3C/svg%3E") center/contain no-repeat}
+
+/* Bar promo & header */
+.promo-bar{background:var(--navy);color:#F3EBDA;letter-spacing:.02em}
+.promo-bar i{color:var(--gold-2)}
+.header{background:rgba(251,248,242,.88);border-bottom:1px solid var(--line-warm)}
+.cart-btn{border-color:var(--line-warm);background:#fff;color:var(--navy);border-radius:9999px}
+.cart-btn:hover{border-color:var(--gold);color:var(--navy)}
+.badge{background:var(--gold);color:#fff}
+
+/* Tombol */
+.btn{border-radius:9999px;letter-spacing:.01em}
+.btn-primary{background:var(--navy);color:#fff;box-shadow:0 6px 16px -8px rgba(15,42,71,.6)}
+.btn-primary:hover{background:var(--navy-2)}
+.btn-outline{background:transparent;border:1px solid var(--gold-2);color:var(--navy)}
+.btn-outline:hover{background:#fff;border-color:var(--gold);color:var(--navy)}
+
+/* Hero */
+.hero{background:var(--ivory)}
+.hero-bg.is-ready{opacity:.7}
+.hero-eyebrow{background:transparent;border:0;color:var(--gold);font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;padding:0}
+.hero-eyebrow-link:hover{background:transparent;color:var(--navy)}
+.hero-title{font-size:clamp(42px,7vw,84px);line-height:1.02;color:var(--navy)}
+.ht-static{font-weight:600}
+.hero .hero-title .ht-word{font-family:var(--serif);font-style:italic;font-weight:500;color:var(--gold);letter-spacing:0}
+.hero h1 .ht-static{font-weight:600;color:var(--navy)}
+.hero-lead{color:var(--text)}
+.trust{list-style:none;display:flex;flex-wrap:wrap;justify-content:center;gap:10px 28px;margin:30px auto 0;padding:16px 26px;max-width:760px;border-top:1px solid var(--line-warm);border-bottom:1px solid var(--line-warm)}
+.trust li{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:500;color:var(--navy)}
+.trust svg{width:18px;height:18px;fill:none;stroke:var(--gold);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.hs-track{box-shadow:0 30px 60px -30px rgba(15,42,71,.45);border:1px solid #fff}
+.hs-dots button{background:rgba(15,42,71,.18)}
+.hs-dots button.on{background:var(--gold)}
+
+/* Promo */
+.promo-card{background:linear-gradient(135deg,#0F2A47 0%,#173A60 100%);border:1px solid rgba(205,176,121,.35);border-radius:20px;padding:30px}
+.promo-card.alt{background:linear-gradient(135deg,#0B1F35 0%,#14304F 100%)}
+.promo-card::after{background:radial-gradient(circle,rgba(205,176,121,.22),transparent 70%);width:220px;height:220px;right:-70px;top:-70px}
+.promo-icon{background:rgba(205,176,121,.14);color:var(--gold-2);border:1px solid rgba(205,176,121,.35);border-radius:9999px}
+.promo-card h3{font-size:28px;color:#fff}
+.promo-term{background:rgba(205,176,121,.18)!important;color:#F3EBDA!important;border:1px solid rgba(205,176,121,.4)}
+
+/* Cara pesan */
+.steps{counter-reset:s}
+.step{background:#fff;border:1px solid var(--line-warm);border-radius:20px;padding:30px 26px;box-shadow:none;position:relative}
+.step:hover{box-shadow:var(--shadow-md)}
+.step b{width:auto;height:auto;background:none;border-radius:0;display:block;font-family:var(--serif);font-style:italic;font-weight:500;font-size:44px;line-height:1;color:var(--gold);margin-bottom:14px}
+.step b::before{content:"0"}
+.step h3{font-size:24px}
+
+/* Produk */
+.section-alt{background:var(--ivory-2);border:0}
+.featured-head h3,.sub-title{font-size:30px;color:var(--navy)}
+.featured-head .icon-btn{border:1px solid var(--line-warm);border-radius:9999px;color:var(--navy);background:#fff}
+.featured-dots button.on,.featured-dots .on{background:var(--gold)!important}
+.toolbar .input{border-radius:9999px;border-color:var(--line-warm);background:#fff;padding-left:20px}
+.input:focus{border-color:var(--gold);box-shadow:var(--ring)}
+.chip{background:transparent;border-color:var(--line-strong);color:var(--navy)}
+.chip:hover{border-color:var(--gold);color:var(--navy)}
+.chip.active{background:var(--navy);border-color:var(--navy);color:#fff}
+.card{border:1px solid rgba(231,220,198,.7);border-radius:20px;box-shadow:var(--shadow-sm);background:#fff}
+.card:hover{box-shadow:var(--shadow-lg);transform:translateY(-4px)}
+.card-img{background:var(--ivory-2)}
+.card-img img{transition:transform .5s ease}
+.card:hover .card-img img{transform:scale(1.04)}
+.card-body{padding:18px 18px 20px}
+.card-cat{background:none;padding:0;color:var(--gold);font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase}
+.card-name{font-family:var(--serif);font-size:21px;font-weight:600;line-height:1.2;color:var(--navy)}
+.card-desc{font-size:13.5px}
+.card-price{color:var(--navy)}
+.price-off{background:var(--gold-soft);color:#8A6A2B}
+.card-flag{background:linear-gradient(135deg,#C9A660,#A27C38);color:#fff;letter-spacing:.06em;text-transform:uppercase;font-size:10px;padding:4px 10px}
+.card .btn{border-radius:9999px}
+.card-qty{border-radius:9999px;border-color:var(--line-warm)}
+.load-more{border:1px solid var(--line-strong)}
+
+/* FAQ */
+.faq{background:#fff;border:1px solid var(--line-warm);border-radius:16px;box-shadow:none}
+.faq summary{font-size:21px;color:var(--navy)}
+.faq[open]{box-shadow:var(--shadow-md)}
+
+/* Footer */
+.footer{background:var(--navy);color:#C9CFD8;position:relative}
+.footer::before{content:"";display:block;width:120px;height:1px;margin:0 auto 26px;background:linear-gradient(90deg,transparent,var(--gold-2),transparent)}
+.footer b{font-family:var(--serif);font-size:26px;font-weight:600;color:#F3EBDA}
+.footer .btn-wa{border-radius:9999px}
+
+/* Pop-up & keranjang */
+.pm-panel{border-radius:22px}
+.pm-media{background:var(--ivory-2)}
+.pm-name{font-size:30px;color:var(--navy)}
+.drawer{background:var(--ivory)}
+.wa-float{box-shadow:0 10px 24px -8px rgba(22,163,74,.6)}
+
+@media (max-width:640px){
+  .section-title{margin-bottom:36px}
+  .trust{gap:10px 18px;padding:14px 8px}
+  .trust li{font-size:13px}
+  .card-name{font-size:18px}
+  .card-body{padding:14px 14px 16px}
+  .pm-name{font-size:24px}
+}

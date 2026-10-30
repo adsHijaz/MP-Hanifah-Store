@@ -18,7 +18,7 @@ window.STORE_CONFIG = {
   metaPixelId: "",
 
   // Warna utama toko (kode hex)
-  brandColor: "#3758F9",
+  brandColor: "#0F2A47",
 
   // =======================================================
   // PROMO — ubah angka di sini, atau set active: false untuk mematikan
